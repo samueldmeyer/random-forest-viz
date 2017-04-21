@@ -16,3 +16,24 @@
 .main-text {
   font-size: 21px;
 }
+
+td {
+  padding: 0;
+}
+
+tr {
+  background-color: white;
+  transition: background-color 0.5s ease;
+}
+
+/*tr:hover {
+  background-color: green;
+}*/
+
+.highlight {
+  background-color: yellow;
+}
+
+.no-padding {
+  padding: 0;
+}

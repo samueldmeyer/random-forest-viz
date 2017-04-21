@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
 </head>
 <body>
   <!-- <nav class="light-blue lighten-1" role="navigation">
@@ -68,6 +69,26 @@
         <div class="main-text col offset-s2 s8">
           3.
           Show the random forest as a ensemble of trees, where each tree is trained on a random selection of subset of features and data
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s6 offset-s5">
+          <form action="">
+            <p>
+              <input name="group1" type="radio" id="data-button" />
+              <label for="data-button">Select Data</label>
+            </p>
+            <p>
+              <input name="group1" type="radio" id="train-tree-button" />
+              <label for="train-tree-button">Train Decision Tree</label>
+            </p>
+          </form>
+        </div>
+      </div>
+      <div id="create-forest" class="row">
+        <div id="create-forest-table" class="col s6 no-padding"></div>
+        <div class="col s6 no-padding">
+          <svg style="width: 500px; height: 400px;"></svg>
         </div>
       </div>
       <div class="row">
@@ -145,10 +166,25 @@
   </footer>
  <!-- forest by iconsphere from the Noun Project -->
 
+ <!-- Need to make sure if we should talk about bagging
+
+Who is consumer?
+Talk about
+
+Add explanation of how a single tree does not generalize, or is
+
+Why not just use one tree? Show why this a problem.
+More data shown to increase intuition? -->
+
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.js"></script>
+  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+  <script src="js/d3v4jetpack.js"></script>
+
+  <script src="js/create-forest.js"></script>
 
   </body>
 </html>
