@@ -1,172 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>A Path to Random Forest</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>A Path to Random Forest</title>
 
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="css/tree_zoomin.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
 </head>
 <body>
-  <!-- <nav class="light-blue lighten-1" role="navigation">
+    <!-- <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
+    <ul class="right hide-on-med-and-down">
+    <li><a href="#">Navbar Link</a></li>
+</ul>
 
-      <ul id="nav-mobile" class="side-nav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-    </div>
-  </nav> -->
-  <div class="section no-pad-bot" id="index-banner">
+<ul id="nav-mobile" class="side-nav">
+<li><a href="#">Navbar Link</a></li>
+</ul>
+<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+</div>
+</nav> -->
+<div class="section no-pad-bot" id="index-banner">
     <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">A Path to Random Forest</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A visual explanation of the random forest algorithm</h5>
-      </div>
-      <br><br>
+        <br><br>
+        <h1 class="header center orange-text">A Path to Random Forest</h1>
+        <div class="row center">
+            <h5 class="header col s12 light">A visual explanation of the random forest algorithm</h5>
+        </div>
+        <br><br>
 
     </div>
-  </div>
-  <div class="section no-pad-bot">
+</div>
+<div class="section no-pad-bot">
     <div class="container">
-      <div class="row">
-        <div class="main-text col s12 center">
-          <img src="./img/noun_715801_cc_small.png" />
+        <div class="row">
+            <div class="main-text col s12 center">
+                <img src="./img/noun_715801_cc_small.png" />
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col offset-s2 s8">
-          1.
-          Provide brief background of decision tree with link to the decision tree post.<br>
-          Here is some brief background about decision trees: they let a program repeatedly split a set of data into multiple categories, so they can classify new instances. Here is an example: (Figure 1)
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                1.
+                Provide brief background of decision tree with link to the decision tree post.<br>
+                Here is some brief background about decision trees: they let a program repeatedly split a set of data into multiple categories, so they can classify new instances. Here is an example: (Figure 1)
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col s12 center">
-          <img src="./data/tree_img/tree11.png" width="500" />
+        <div class="row">
+            <div class="main-text col s12 center">
+                <img src="./data/tree_img/tree11.png" width="500" />
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col offset-s2 s8">
-          2.
-          Describe the motivation for random forest - crowd intelligence of individual decision trees
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                2.
+                Describe the motivation for random forest - crowd intelligence of individual decision trees
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col s12 center">
-          <img src="./img/crowd.svg" height="400" width="400" />
+        <div class="row">
+            <div class="main-text col s12 center">
+                <img src="./img/crowd.svg" height="400" width="400" />
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col offset-s2 s8">
-          3.
-          Show the random forest as a ensemble of trees, where each tree is trained on a random selection of subset of features and data
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                3.
+                Show the random forest as a ensemble of trees, where each tree is trained on a random selection of subset of features and data
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col s6 offset-s5">
-          <form action="">
-            <p>
-              <input name="group1" type="radio" id="data-button" />
-              <label for="data-button">Select Data</label>
-            </p>
-            <p>
-              <input name="group1" type="radio" id="train-tree-button" />
-              <label for="train-tree-button">Train Decision Tree</label>
-            </p>
-          </form>
+        <div class="row">
+            <div class="col s6 offset-s5">
+                <form action="">
+                    <p>
+                        <input name="group1" type="radio" id="data-button" />
+                        <label for="data-button">Select Data</label>
+                    </p>
+                    <p>
+                        <input name="group1" type="radio" id="train-tree-button" />
+                        <label for="train-tree-button">Train Decision Tree</label>
+                    </p>
+                </form>
+            </div>
         </div>
-      </div>
-      <div id="create-forest" class="row">
-        <div id="create-forest-table" class="col s6 no-padding"></div>
-        <div class="col s6 no-padding">
-          <svg style="width: 500px; height: 400px;"></svg>
+        <div id="create-forest" class="row">
+            <div id="create-forest-table" class="col s6 no-padding"></div>
+            <div class="col s6 no-padding">
+                <svg style="width: 500px; height: 400px;"></svg>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col s12 center">
-          <img src="./img/tree-options.png" width="500" />
+        <div class="row">
+            <div class="main-text col s12 center">
+                <img src="./img/tree-options.png" width="500" />
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col offset-s2 s8">
-          4.
-          Zoom in to see the internal structure of an individual tree
+
+
+        <!-- Individual Tree -->
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                As each tree is trained on different data, they grow different
+                decision paths. Click each tree to see their individual judgeing
+                criteria for if a mushroom is edible or poisonous.
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col s12 center">
-          <img src="./img/forest.png" width="500" />
-          <!-- https://thenounproject.com/ecem.afacan.5/collection/trees/?oq=tree&cidx=0 -->
+
+
+        <div class="row">
+            <div class="col s12" id="treelist">
+            </div>
+            <div class="col s12">
+                <div id="collapsible_tree">
+                </div>
+            </div>
+
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col offset-s2 s8">
-          5
-          Given a new datapoint, show the pooling of individual predictions to generate the final outcome
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                5
+                Given a new datapoint, show the pooling of individual predictions to generate the final outcome
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col s12 center">
-          <img src="./img/forestDecision.png" width="300" />
-          <!-- https://thenounproject.com/ecem.afacan.5/collection/trees/?oq=tree&cidx=0 -->
+        <div class="row">
+            <div class="main-text col s12 center">
+                <img src="./img/forestDecision.png" width="300" />
+                <!-- https://thenounproject.com/ecem.afacan.5/collection/trees/?oq=tree&cidx=0 -->
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="main-text col offset-s2 s8">
-          6.
-          Summarize and suggest future readings
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                6.
+                Summarize and suggest future readings
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <footer class="page-footer orange">
+<footer class="page-footer orange">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
 
 
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Settings</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li><a class="white-text" href="#!">Link 4</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="#!">Link 1</a></li>
+                    <li><a class="white-text" href="#!">Link 2</a></li>
+                    <li><a class="white-text" href="#!">Link 3</a></li>
+                    <li><a class="white-text" href="#!">Link 4</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
     <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
+        <div class="container">
+            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        </div>
     </div>
-  </footer>
- <!-- forest by iconsphere from the Noun Project -->
+</footer>
+<!-- forest by iconsphere from the Noun Project -->
 
- <!-- Need to make sure if we should talk about bagging
+<!-- Need to make sure if we should talk about bagging
 
 Who is consumer?
 Talk about
@@ -176,15 +186,16 @@ Add explanation of how a single tree does not generalize, or is
 Why not just use one tree? Show why this a problem.
 More data shown to increase intuition? -->
 
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.js"></script>
-  <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-  <script src="js/d3v4jetpack.js"></script>
+<!--  Scripts-->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="js/materialize.js"></script>
+<script src="js/init.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.js"></script>
+<script src="js/tree-zoomin.js"></script>
+<!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+<script src="js/d3v4jetpack.js"></script>
 
-  <script src="js/create-forest.js"></script>
+<script src="js/create-forest.js"></script>
 
-  </body>
+</body>
 </html>
