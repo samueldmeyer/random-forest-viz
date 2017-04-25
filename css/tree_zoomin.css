@@ -14,12 +14,21 @@
     stroke-width: 2px;
 }
 
+#collapsible_tree{
+    width: 960px;
+    height:500px;
+}
+
 #tree_list li{
-    height: 40px !important;
+    height: 60px !important;
+}
+
+#tree_list li.active{
+    background-color: #eceff1 !important;
 }
 
 li[id^="tree_"] img {
     margin-top: 8px !important;
-    width: 20px;
-    height: 20px;
+    /*width: 60px;*/
+    height: 50px;
 }

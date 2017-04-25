@@ -1,7 +1,8 @@
 // Set the dimensions and margins of the diagram
-var margin = {top: 20, right: 90, bottom: 30, left: 90},
+var margin = {top: 20, right: 90, bottom: 30, left: 120},
 width = 960 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom,
+link_length = 220,
 rect_width = 100,
 rect_height = 30,
 max_link_width = 30,
@@ -28,15 +29,20 @@ svg;
 // declares a tree layout and assigns the size
 var treemap = d3.tree().size([height, width]);
 
-create_buttons($("#treelist"), 20);
+// individual tree
+renderTree(json_filepath + 'tree0.json', "#single_tree", false);
 
-function renderTree(file_name){
+// buttons for tree zooming
+create_buttons($("#treelist"), 10);
+
+
+function renderTree(file_name, div_name, init_collapse){
     // append the svg object to the body of the page
     // appends a 'group' element to 'svg'
     // moves the 'group' element to the top left margin
     d3.select("#collapsible_tree").select("svg").remove();
 
-    svg = d3.select("#collapsible_tree").append("svg")
+    svg = d3.select(div_name).append("svg")
     .attr("width", width + margin.right + margin.left)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -48,17 +54,21 @@ function renderTree(file_name){
     .interpolate(d3.interpolateHcl)
     .range([class_0_color, class_1_color]);
 
-    d3.json(file_name, load_dataset);
+    d3.json(file_name, function(d){
+        load_dataset(d, init_collapse);
+    });
 }
 
-function load_dataset(treeData){
+function load_dataset(treeData, init_collapse){
     // Assigns parent, children, height, depth
     root = d3.hierarchy(treeData, function(d) { return d.children; });
     root.x0 = height / 2;
     root.y0 = 0;
 
     // Collapse after the second level
-    root.children.forEach(collapse);
+    if (init_collapse){
+        root.children.forEach(collapse);
+    }
 
     // create the scale for link thickness
     var n_samples = root.data.samples;
@@ -88,7 +98,7 @@ function update(source) {
     links = treeData.descendants().slice(1);
 
     // Normalize for fixed-depth.
-    nodes.forEach(function(d){ d.y = d.depth * 180});
+    nodes.forEach(function(d){ d.y = d.depth * link_length});
 
     // ****************** Nodes section ***************************
 
@@ -142,7 +152,6 @@ function update(source) {
 
     // Update the node attributes and style
     nodeUpdate.select('rect.node')
-    //.attr('r', 10)
     .style("fill", get_fill_color)
     .attr('cursor', 'pointer');
 
@@ -150,7 +159,7 @@ function update(source) {
     var nodeExit = node.exit().transition()
     .duration(duration)
     .attr("transform", function(d) {
-        return "translate(" + source.y + "," + source.x + ")";
+        return "translate(" + (source.y + 20) + "," + (source.x + rect_height/2)+ ")";
     })
     .remove();
 
@@ -262,7 +271,7 @@ function displayChart(tree_id){
        }
    };
 
-   renderTree(json_filepath + 'tree' + tree_id + '.json');
+   renderTree(json_filepath + 'tree' + tree_id + '.json', "#collapsible_tree", true);
 }
 
 function create_buttons(target_div, num_buttons) {
@@ -270,16 +279,17 @@ function create_buttons(target_div, num_buttons) {
     img = '<img src="img/tree_icons/tree_',
     img_id;
     for (var i = 0; i < num_buttons; i++ ) {
-        img_id = (i % 3);
+        img_id = i;
+
         buttons += '<li class="waves-effect waves-light" id="tree_'+ i +
         '"><a onclick="displayChart('+ i + ')">' + img + img_id + '.png"' +
-        '/> tree ' + (i+1) + '</a></li>';
+        '/></a></li>';
     }
-    console.log(buttons);
     buttons = buttons + "</ul>";
     target_div.html(buttons);
 }
 
 
 // tree icons:
-// - Chestnut, beech, Palm Tree by parkjisun from the Noun Project
+// - Tree, Korean red tree, beech, Palm Tree, Sassafras,
+// Savannah tree, pine, beech, willow, ginkgo by parkjisun from the Noun Project
