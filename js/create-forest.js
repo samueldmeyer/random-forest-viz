@@ -1,54 +1,57 @@
 // Maybe do this: http://bl.ocks.org/Kcnarf/9e4813ba03ef34beac6e
 
-var data;
+var createForestData;
 
 // TODO: change these to be on selection update, not on click
 // TODO: Add selection of columns
-$('#data-button').on('click', function() {
-  for (var j = 0; j < 10; j++) {
-    var selectedRow = getRandomInt(1, 15);
-    d3.selectAll("tr").style('background-color', 'white')
-    .filter(function (d, i) { return i === selectedRow;})
-      .style('background-color', 'white')
-      .transition().delay(j * 100).duration(200).style('background-color', 'blue')
-      .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
+
+
+$('input[type=radio][name=group1]').change(function() {
+  if (this.id == 'data-button') {
+    d3.selectAll("tr").style('background-color', 'white');
+    for (var j = 0; j < 10; j++) {
+      var selectedRow = getRandomInt(1, 15);
+      d3.selectAll("tr").filter(function (d, i) { return i === selectedRow;})
+        .style('background-color', 'white')
+        .transition().delay(j * 100).duration(200).style('background-color', 'blue')
+        .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
+    }
+  } else if (this.id == 'train-tree-button') {
+    var svg = d3.select('#create-forest svg');
+    svg.append('circle').attr('r', 30).attr('fill', 'white').attr('cy', 150).attr('cx', 0)
+      .transition().duration(200).attr('fill', 'LightBlue')
+      .transition().duration(2000).attr('cx', getRandomInt(100, 300)).attr('cy', getRandomInt(50, 300))
+      .transition().duration(500).attr('r', 0)
+      .on("end", growTree);
+
+    function growTree() {
+      var x = parseFloat(this.getAttribute('cx'));
+      var y = parseFloat(this.getAttribute('cy'));
+      svg.append("image").attr("xlink:href","img/noun_337864_cc.svg")
+        .attr("x", x)
+        .attr("y", y)
+        .attr("width", 0)
+        .attr("height", 0)
+        .transition()
+        .duration(1000)
+        .attr("width", 100)
+        .attr("height", 100)
+        .attr("x", x - 50)
+        .attr("y", y - 50);
+    }
+
+    // http://stackoverflow.com/questions/21209549/embed-and-refer-to-an-external-svg-via-d3-and-or-javascript
+    // d3.xml("img/noun_337864_cc.svg").mimeType("image/svg+xml").get(function(error, xml) {
+    //   if (error) throw error;
+    //   var svgNode = xml.getElementsByTagName("path")[0];
+    //   svg.node().appendChild(svgNode);
+    // });
   }
-});
-
-$('#train-tree-button').on('click', function() {
-  var svg = d3.select('svg');
-  svg.append('circle').attr('r', 30).attr('fill', 'white').attr('cy', 150).attr('cx', 0)
-    .transition().duration(200).attr('fill', 'LightBlue')
-    .transition().duration(2000).attr('cx', getRandomInt(100, 300)).attr('cy', getRandomInt(50, 300))
-    .transition().duration(500).attr('r', 0)
-    .on("end", growTree);
-
-  function growTree() {
-    var x = parseFloat(this.getAttribute('cx'));
-    var y = parseFloat(this.getAttribute('cy'));
-    svg.append("image").attr("xlink:href","img/noun_337864_cc.svg")
-      .attr("x", x)
-      .attr("y", y)
-      .attr("width", 0)
-      .attr("height", 0)
-      .transition()
-      .duration(1000)
-      .attr("width", 100)
-      .attr("height", 100)
-      .attr("x", x - 50)
-      .attr("y", y - 50);
-  }
-
-  // d3.xml("img/noun_337864_cc.svg").mimeType("image/svg+xml").get(function(error, xml) {
-  //   if (error) throw error;
-  //   var svgNode = xml.getElementsByTagName("path")[0];
-  //   svg.node().appendChild(svgNode);
-  // });
 });
 
 d3.csv("data/agaricus-lepiota-color.csv", function(error, response) {
-  console.log('data:', response);
-  data = response;
+  console.log('createForestData:', response);
+  createForestData = response;
 
   var table = d3.select('#create-forest-table').append('table');
   // If we want an SVG table: http://stackoverflow.com/questions/6987005/create-a-table-in-svg
@@ -68,7 +71,7 @@ d3.csv("data/agaricus-lepiota-color.csv", function(error, response) {
     .text(d3.f('head'));
   table.append('tbody')
      .selectAll('tr')
-     .data(data).enter()
+     .data(createForestData).enter()
      .append('tr')
      .selectAll('td')
      .data(function(row, i) {

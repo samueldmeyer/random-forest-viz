@@ -17,6 +17,7 @@
 #collapsible_tree{
     width: 960px;
     height:500px;
+    border-style: solid;
 }
 
 #tree_list li{
