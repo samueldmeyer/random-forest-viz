@@ -40,16 +40,15 @@
     <div class="container">
         <div class="row">
             <div class="main-text col s12 center">
-                <img src="./img/noun_715801_cc_small.png" />
+                <img width=200 src="./img/noun_354897_cc.svg" />
+                <!-- Allie Tate from Noun Project -->
             </div>
         </div>
 
         <!-- A tree -->
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                1.
-                Provide brief background of decision tree with link to the decision tree post.<br>
-                Here is some brief background about decision trees: they let a program repeatedly split a set of data into multiple categories, so they can classify new instances. Here is an example: (Figure 1)
+                Random forest is a machine learning algorithm that builds on other machine learning. To understand random forest, you should first understand decision trees. Decision trees work like flow-charts, asking a single question about the test item, then asking more questions until they reach a conclusion. Check one out below (start on the left). If you want to know more, check out <a href='http://www.r2d3.us/'>http://www.r2d3.us/</a>
             </div>
         </div>
 
@@ -61,8 +60,7 @@
 
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                2.
-                Describe the motivation for random forest - crowd intelligence of individual decision trees
+                The problem with decision trees is that they either have blind spots based on the data that was used to create them in the first place. Random forest solves this by making a bunch of trees (a forest, also known as an ensemble) and combining the results together.
             </div>
         </div>
         <div class="row">
@@ -72,8 +70,7 @@
         </div>
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                3.
-                Show the random forest as a ensemble of trees, where each tree is trained on a random selection of subset of features and data
+                If all trees were trained on exactly the same data, they would all be the same, so they would all predict the same answer, which wouldn’t be any better than just having one. Instead, each tree is given a subset of the data and trained on just that subset. As a result, each tree is a specialist in using some subset of the data. Use the visualization below to try selecting some data and training some trees for the forest.
             </div>
         </div>
         <div class="row">
@@ -81,7 +78,11 @@
                 <form action="">
                     <p>
                         <input name="group1" type="radio" id="data-button" />
-                        <label for="data-button">Select Data</label>
+                        <label for="data-button">Select Rows</label>
+                    </p>
+                    <p>
+                        <input name="group1" type="radio" id="column-select-option" />
+                        <label for="column-select-option">Select Columns</label>
                     </p>
                     <p>
                         <input name="group1" type="radio" id="train-tree-button" />
@@ -107,7 +108,7 @@
         <div class="row">
             <div class="main-text col offset-s2 s8">
                 As each tree is trained on different data, they grow different
-                decision paths. Click each tree to see their individual judgeing
+                decision paths. Click each tree to see their individual judging
                 criteria for if a mushroom is edible or poisonous.
             </div>
         </div>
@@ -124,8 +125,7 @@
         </div>
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                5
-                Given a new datapoint, show the pooling of individual predictions to generate the final outcome
+                If we have a new mushroom the trees have never seen before, we can use them to classify it. We let them take a vote, and the majority wins. Click below for an animation of the process.
             </div>
         </div>
         <div class="row">
@@ -146,8 +146,7 @@
         </div> -->
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                6.
-                Summarize and suggest future readings
+                We hope you now understand machine learning better. If you would like to use this yourself, we used <a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Python's sklearn</a>.
             </div>
         </div>
     </div>
@@ -157,34 +156,21 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Company Bio</h5>
-                <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
+                <h5 class="white-text">Sam and Yiyi</h5>
+                <p class="grey-text text-lighten-4">This was made by graduate students at Berkeley School of Information to help people understand more of machine learning.</p>
             </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Settings</h5>
+            <div class="col l6 s12">
+                <h5 class="white-text">References</h5>
                 <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
-                </ul>
-            </div>
-            <div class="col l3 s12">
-                <h5 class="white-text">Connect</h5>
-                <ul>
-                    <li><a class="white-text" href="#!">Link 1</a></li>
-                    <li><a class="white-text" href="#!">Link 2</a></li>
-                    <li><a class="white-text" href="#!">Link 3</a></li>
-                    <li><a class="white-text" href="#!">Link 4</a></li>
+                    <li><a class="white-text" href="#!">Noun Project</a></li>
+                    <li><a class="white-text" href="#!">INFO 247</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-            Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+            <p>Enjoy!</p>
         </div>
     </div>
 </footer>

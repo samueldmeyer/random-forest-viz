@@ -2,16 +2,22 @@
 
 var createForestData;
 
-// TODO: change these to be on selection update, not on click
 // TODO: Add selection of columns
-
-
-$('input[type=radio][name=group1]').change(function() {
+$('input[type=radio][name=group1]').on('change', function() {
   if (this.id == 'data-button') {
     d3.selectAll("tr").style('background-color', 'white');
     for (var j = 0; j < 10; j++) {
       var selectedRow = getRandomInt(1, 15);
       d3.selectAll("tr").filter(function (d, i) { return i === selectedRow;})
+        .style('background-color', 'white')
+        .transition().delay(j * 100).duration(200).style('background-color', 'blue')
+        .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
+    }
+  } else if (this.id == 'column-select-option') {
+    d3.selectAll("th").style('background-color', 'white');
+    for (var j = 0; j < 4; j++) {
+      var selectedRow = getRandomInt(1, 5);
+      d3.selectAll("th").filter(function (d, i) { return i === selectedRow;})
         .style('background-color', 'white')
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
         .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');

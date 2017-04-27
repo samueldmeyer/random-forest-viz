@@ -1,3 +1,4 @@
+(function () {  // IIFE to clean globals
 // Set the dimensions and margins of the diagram
 var margin = {top: 20, right: 90, bottom: 30, left: 120},
 width = 960 - margin.left - margin.right,
@@ -260,7 +261,8 @@ function update(source) {
 * button clicking
 **************************************** */
 
-function displayChart(tree_id){
+function displayChart(){
+  tree_id = this.dataset.index;
    var buttons =  document.querySelectorAll('li[id^="tree_"]');
    for (var i = 0, j = buttons.length; i<j; i++) {
        button_id = buttons[i].id.replace('tree_', '');
@@ -282,14 +284,18 @@ function create_buttons(target_div, num_buttons) {
         img_id = i;
 
         buttons += '<li class="waves-effect waves-light" id="tree_'+ i +
-        '"><a onclick="displayChart('+ i + ')">' + img + img_id + '.png"' +
+        '" data-index="'+ i + '"><a>' + img + img_id + '.png"' +
         '/></a></li>';
     }
     buttons = buttons + "</ul>";
+
     target_div.html(buttons);
+
+    $('#tree_list li').on('click', displayChart);
 }
 
 
 // tree icons:
 // - Tree, Korean red tree, beech, Palm Tree, Sassafras,
 // Savannah tree, pine, beech, willow, ginkgo by parkjisun from the Noun Project
+})();
