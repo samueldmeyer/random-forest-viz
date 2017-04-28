@@ -1,10 +1,26 @@
 // Maybe do this: http://bl.ocks.org/Kcnarf/9e4813ba03ef34beac6e
-
+(function () {
 var createForestData;
+
+function updateText(delay, text) {
+  d3.select('#step-text')
+    .transition()
+    .duration(500)
+    .style("opacity", 0)
+    .transition()
+    .duration(500)
+    .delay(delay)
+    .text(text)
+    .style("opacity", 1);
+}
 
 // TODO: Add selection of columns
 $('input[type=radio][name=group1]').on('change', function() {
-  if (this.id == 'data-button') {
+  if (this.id == 'start-build') {
+    d3.selectAll("tr").style('background-color', 'white');
+    d3.selectAll("th").style('background-color', 'white');
+    updateText(0, 'Click on "Select Rows" to select some mushrooms for training the first tree. They are selected with replacement, so some mushrooms might be included twice.');
+  } else if (this.id == 'data-button') {
     d3.selectAll("tr").style('background-color', 'white');
     for (var j = 0; j < 10; j++) {
       var selectedRow = getRandomInt(1, 15);
@@ -13,6 +29,7 @@ $('input[type=radio][name=group1]').on('change', function() {
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
         .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
     }
+    updateText(2000, 'Click on "Select Columns" to select some features of the mushrooms for training the first tree. They are selected with replacement, so some features might be included twice.');
   } else if (this.id == 'column-select-option') {
     d3.selectAll("th").style('background-color', 'white');
     for (var j = 0; j < 4; j++) {
@@ -22,12 +39,13 @@ $('input[type=radio][name=group1]').on('change', function() {
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
         .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
     }
+    updateText(800, 'Click on "Train Decision Tree" to train a tree. Using the selected features and mushrooms, we add a tree to the forest.');
   } else if (this.id == 'train-tree-button') {
     var svg = d3.select('#create-forest svg');
     svg.append('circle').attr('r', 30).attr('fill', 'white').attr('cy', 150).attr('cx', 0)
       .transition().duration(200).attr('fill', 'LightBlue')
-      .transition().duration(2000).attr('cx', getRandomInt(100, 300)).attr('cy', getRandomInt(50, 300))
-      .transition().duration(500).attr('r', 0)
+      .transition().duration(2000).ease(d3.easeBackInOut.overshoot(2)).attr('cx', getRandomInt(100, 300)).attr('cy', getRandomInt(50, 300))
+      .transition().duration(500).ease(d3.easePoly).attr('r', 0)
       .on("end", growTree);
 
     function growTree() {
@@ -46,6 +64,8 @@ $('input[type=radio][name=group1]').on('change', function() {
         .attr("x", x - 50)
         .attr("y", y - 50);
     }
+
+    updateText(3000, 'To add more trees, go back to the beginning to get a different set of mushrooms and features to train a new tree.');
 
     // http://stackoverflow.com/questions/21209549/embed-and-refer-to-an-external-svg-via-d3-and-or-javascript
     // d3.xml("img/noun_337864_cc.svg").mimeType("image/svg+xml").get(function(error, xml) {
@@ -108,3 +128,4 @@ function getRandomInt(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min;
 }
+})();
