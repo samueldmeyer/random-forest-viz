@@ -33,7 +33,8 @@ $('input[type=radio][name=group1]').on('change', function() {
     function growTree() {
       var x = parseFloat(this.getAttribute('cx'));
       var y = parseFloat(this.getAttribute('cy'));
-      svg.append("image").attr("xlink:href","img/noun_337864_cc.svg")
+      svg.append("image") //.attr("xlink:href","img/noun_337864_cc.svg")
+        .attr("xlink:href","img/tree_icons/tree_" + getRandomInt(0, 10) + ".png")
         .attr("x", x)
         .attr("y", y)
         .attr("width", 0)
