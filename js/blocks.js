@@ -7,7 +7,6 @@ build_block("#predictor_all", ["predictor_1", "predictor_2", "predictor_3"]);
 
 function build_block(div_name, rows){
     var nrow = rows.length;
-    console.log("get here");
 
     var margin = {top: 30, right: 90, bottom: 30, left: 120};
     var gridsize = 50,
@@ -26,7 +25,7 @@ function build_block(div_name, rows){
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
     var blocks_filename = 'data/blocks.csv';
-    
+
     var cols = [];
     for (i = 0; i < 10; i++){
         cols.push(i+1);

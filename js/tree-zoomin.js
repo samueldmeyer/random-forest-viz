@@ -58,6 +58,40 @@ function renderTree(file_name, div_name, init_collapse){
     d3.json(file_name, function(d){
         load_dataset(d, init_collapse);
     });
+
+    if (!init_collapse){
+        console.log("get here");
+        const type = d3.annotationCustomType(
+            d3.annotationCalloutCurve,
+            {"className":"custom",
+            "connector":{"type":"elbow",
+            "end":"dot"},
+            "note":{"lineType":"horizontal",
+            "align":"left"}}
+        );
+
+        const annotations = [{
+            note: {
+                label: "No goes up, yes goes down",
+                title: "Decision split"
+            },
+            //can use x, y directly instead of data
+            // data: { date: "18-Sep-09", close: 185.02 },
+            dy: -50,
+            dx: -100,
+            x: 100,
+            y: 160,
+            // type: type,
+        }];
+
+        const makeAnnotations = d3.annotation()
+        .textWrap(200)
+        .type(type)
+        .annotations(annotations);
+        svg.append("g")
+        .attr("class", "annotation-group")
+        .call(makeAnnotations);
+    }
 }
 
 function load_dataset(treeData, init_collapse){
