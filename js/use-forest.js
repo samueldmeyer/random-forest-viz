@@ -45,6 +45,8 @@
       .append('image')
       .attr('class', 'd-tree')
       .attr("xlink:href", function(d, i) {return "img/tree_icons/tree_" + i + ".png"})
+      .attr("width", 88)
+      .attr("height", 91)
       // .attr("xlink:href","img/noun_337864_cc.svg")
       .attr('x', d3.f('x'))
       .attr('y', d3.f('y'));
