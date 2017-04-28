@@ -57,15 +57,50 @@
             </div>
         </div>
 
+        <!-- blocks -->
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                The problem with decision trees is that they either have blind spots based on the data that was used to create them in the first place. Random forest solves this by making a bunch of trees (a forest, also known as an ensemble) and combining the results together. <br/> <br/>
+
+                For example, below is a actual outcome we'd like to predict.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main-text col offset-s2 s8" id="actual">
+            </div>
+        </div>
 
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                The problem with decision trees is that they either have blind spots based on the data that was used to create them in the first place. Random forest solves this by making a bunch of trees (a forest, also known as an ensemble) and combining the results together.
+                When we use one predictor, even a pretty good one, sometimes it makes mistakes.
             </div>
         </div>
+
         <div class="row">
-            <div class="main-text col s12 center">
-                <img src="./img/crowd.svg" height="400" width="400" />
+            <div class="main-text col offset-s2 s8" id="predictor_1">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                A different predictor might give pretty good but slightly different predictions.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main-text col offset-s2 s8" id="predictor_2">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                What if we can combine the power of the individual predictors to minimize our mistakes?
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main-text col offset-s2 s8" id="predictor_all">
             </div>
         </div>
         <div class="row">
@@ -98,58 +133,58 @@
             </div>
         </div>
         <!-- <div class="row">
-            <div class="main-text col s12 center">
-                <img src="./img/tree-options.png" width="500" />
-            </div>
-        </div> -->
+        <div class="main-text col s12 center">
+        <img src="./img/tree-options.png" width="500" />
+    </div>
+</div> -->
 
 
-        <!-- Tree Zooming -->
-        <div class="row">
-            <div class="main-text col offset-s2 s8">
-                As each tree is trained on different data, they grow different
-                decision paths. Click each tree to see their individual judging
-                criteria for if a mushroom is edible or poisonous.
-            </div>
-        </div>
+<!-- Tree Zooming -->
+<div class="row">
+    <div class="main-text col offset-s2 s8">
+        As each tree is trained on different data, they grow different
+        decision paths. Click each tree to see their individual judging
+        criteria for if a mushroom is edible or poisonous.
+    </div>
+</div>
 
 
-        <div class="row">
-            <div class="col s12" id="treelist">
-            </div>
-            <div class="col s12">
-                <div id="collapsible_tree">
-                </div>
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="main-text col offset-s2 s8">
-                If we have a new mushroom the trees have never seen before, we can use them to classify it. We let them take a vote, and the majority wins. Click below for an animation of the process.
-            </div>
-        </div>
-        <div class="row">
-          <div class="main-text col offset-s4 s4 center">
-            <a class="waves-effect waves-light btn center" id="use-forest-button">Use Forest</a>
-          </div>
-        </div>
-        <div id="use-forest" class="row">
-            <div class="col s12 center">
-                <svg style="width: 1000px; height: 400px;"></svg>
-            </div>
-        </div>
-        <!-- <div class="row">
-            <div class="main-text col s12 center">
-                <img src="./img/forestDecision.png" width="300" />
-                 https://thenounproject.com/ecem.afacan.5/collection/trees/?oq=tree&cidx=0
-            </div>
-        </div> -->
-        <div class="row">
-            <div class="main-text col offset-s2 s8">
-                We hope you now understand machine learning better. If you would like to use this yourself, we used <a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Python's sklearn</a>.
-            </div>
+<div class="row">
+    <div class="col s12" id="treelist">
+    </div>
+    <div class="col s12">
+        <div id="collapsible_tree">
         </div>
     </div>
+
+</div>
+<div class="row">
+    <div class="main-text col offset-s2 s8">
+        If we have a new mushroom the trees have never seen before, we can use them to classify it. We let them take a vote, and the majority wins. Click below for an animation of the process.
+    </div>
+</div>
+<div class="row">
+    <div class="main-text col offset-s4 s4 center">
+        <a class="waves-effect waves-light btn center" id="use-forest-button">Use Forest</a>
+    </div>
+</div>
+<div id="use-forest" class="row">
+    <div class="col s12 center">
+        <svg style="width: 1000px; height: 400px;"></svg>
+    </div>
+</div>
+<!-- <div class="row">
+<div class="main-text col s12 center">
+<img src="./img/forestDecision.png" width="300" />
+https://thenounproject.com/ecem.afacan.5/collection/trees/?oq=tree&cidx=0
+</div>
+</div> -->
+<div class="row">
+    <div class="main-text col offset-s2 s8">
+        We hope you now understand machine learning better. If you would like to use this yourself, we used <a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Python's sklearn</a>.
+    </div>
+</div>
+</div>
 </div>
 
 <footer class="page-footer orange">
@@ -192,6 +227,7 @@ More data shown to increase intuition? -->
 <script src="js/init.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.8.0/d3.js"></script>
 <script src="js/tree-zoomin.js"></script>
+<script src="js/blocks.js"></script>
 <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
 <script src="js/d3v4jetpack.js"></script>
 
