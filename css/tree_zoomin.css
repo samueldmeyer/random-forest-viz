@@ -14,15 +14,19 @@
     stroke-width: 2px;
 }
 
+#single_tree{
+    margin-top: -30px;
+}
+
 #collapsible_tree{
     width: 960px;
     height:500px;
-    border-top-style: dotted;
+    /*border-top-style: dotted;
     border-right-style: solid;
-    border-bottom-style: dotted;
-    border-left-style: solid;
-    border-radius: 2px;
-    border-color: #9de4e8;
+    border-bottom-style: dotted;*/
+    border-style: solid;
+    border-radius: 1px;
+    border-color: #bdbdbd;
 }
 
 #tree_list li{
