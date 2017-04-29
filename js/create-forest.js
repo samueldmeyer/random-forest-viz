@@ -1,6 +1,7 @@
 // Maybe do this: http://bl.ocks.org/Kcnarf/9e4813ba03ef34beac6e
 (function () {
 var createForestData;
+var selectedRowsList;
 
 function updateText(delay, text) {
   d3.select('#step-text')
@@ -14,36 +15,59 @@ function updateText(delay, text) {
     .style("opacity", 1);
 }
 
-// TODO: Add selection of columns
 $('input[type=radio][name=group1]').on('change', function() {
   if (this.id == 'start-build') {
     d3.selectAll("tr").style('background-color', 'white');
     d3.selectAll("th").style('background-color', 'white');
+    d3.selectAll("td").style('background-color', null);
     updateText(0, 'Click on "Select Rows" to select some mushrooms for training the first tree. They are selected with replacement, so some mushrooms might be included twice.');
   } else if (this.id == 'data-button') {
+    d3.selectAll("td").style('background-color', null);
+    var selectedRowArr = [];
     d3.selectAll("tr").style('background-color', 'white');
-    for (var j = 0; j < 10; j++) {
-      var selectedRow = getRandomInt(1, 15);
-      d3.selectAll("tr").filter(function (d, i) { return i === selectedRow;})
+    for (let j = 0; j < 10; j++) {
+      selectedRowArr.push(getRandomInt(1, 15));
+    }
+    selectedRowsList = selectedRowArr;
+    for (let j = 0; j < selectedRowArr.length; j++) {
+      row = selectedRowArr[j];
+      d3.selectAll("tr").filter(function (d, i) { return i === row;})
         .style('background-color', 'white')
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
         .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
     }
     updateText(2000, 'Click on "Select Columns" to select some features of the mushrooms for training the first tree. They are selected with replacement, so some features might be included twice.');
   } else if (this.id == 'column-select-option') {
+    var selectedColArr = [0];
     d3.selectAll("th").style('background-color', 'white');
-    for (var j = 0; j < 4; j++) {
-      var selectedRow = getRandomInt(1, 5);
-      d3.selectAll("th").filter(function (d, i) { return i === selectedRow;})
+    for (let j = 0; j < 3; j++) {
+      selectedColArr.push(getRandomInt(1,5));
+    }
+    for (let j = 0; j < selectedColArr.length; j++) {
+      col = selectedColArr[j];
+      d3.selectAll("th").filter(function (d, i) { return i === col;})
         .style('background-color', 'white')
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
         .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
     }
+    var tr = d3.selectAll("tbody tr").filter(function(d, i) {
+      return selectedRowsList.indexOf(i + 1) > -1;
+    });
+    console.log(tr);
+    var td = tr.selectAll("td");
+    // debugger;
+    td.transition().delay(selectedColArr.length * 200).duration(2000)
+    .style("background-color", function(d, i) {
+      if (selectedColArr.indexOf(i) > -1) {
+        return "DarkBlue";
+      }
+    });
+    //.selectAll('td')
     updateText(800, 'Click on "Train Decision Tree" to train a tree. Using the selected features and mushrooms, we add a tree to the forest.');
   } else if (this.id == 'train-tree-button') {
     var svg = d3.select('#create-forest svg');
     svg.append('circle').attr('r', 30).attr('fill', 'white').attr('cy', 150).attr('cx', 0)
-      .transition().duration(200).attr('fill', 'LightBlue')
+      .transition().duration(200).attr('fill', 'DarkBlue')
       .transition().duration(2000).ease(d3.easeBackInOut.overshoot(2)).attr('cx', getRandomInt(100, 300)).attr('cy', getRandomInt(50, 300))
       .transition().duration(500).ease(d3.easePoly).attr('r', 0)
       .on("end", growTree);
@@ -76,18 +100,18 @@ $('input[type=radio][name=group1]').on('change', function() {
   }
 });
 
-d3.csv("data/agaricus-lepiota-color.csv", function(error, response) {
-  console.log('createForestData:', response);
-  createForestData = response;
+d3.csv("data/formatted_mushroom_dataset.csv", function(error, response) {
+  // console.log('createForestData:', response);
+  createForestData = response.slice(0, 16);
 
   var table = d3.select('#create-forest-table').append('table');
   // If we want an SVG table: http://stackoverflow.com/questions/6987005/create-a-table-in-svg
   // https://www.vis4.net/blog/posts/making-html-tables-in-d3-doesnt-need-to-be-a-pain/
   var columns = [
     { head: 'Edibility', cl: 'title', html: d3.f('edibility') },
-    { head: 'Cap Shape', cl: 'center', html: d3.f('cap-shape') },
-    { head: 'Cap Color', cl: 'center', html: d3.f('cap-color') },
-    { head: 'Bruises', cl: 'center', html: d3.f('bruises') },
+    { head: 'Cap Shape', cl: 'center', html: d3.f('cap shape') },
+    { head: 'Cap Color', cl: 'center', html: d3.f('cap color') },
+    { head: 'Bruises', cl: 'center', html: d3.f('bruise') },
     { head: 'Odor', cl: 'center', html: d3.f('odor') }
   ];
   table.append('thead').append('tr')
