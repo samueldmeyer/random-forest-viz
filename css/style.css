@@ -5,6 +5,53 @@
 *
 * Made By MaterializeCSS.com
 */
+.title{
+    color: #0097a7;
+}
+
+.divider-line{
+    margin-top: 50px;
+    height: 50px;
+}
+
+.conclusion{
+    height: 300px;
+    overflow: hidden;
+}
+
+#conclusion1{
+    background-image: url("../img/placeholder_cat1.jpg") !important;
+    background-size: cover;
+    background-position: center;
+}
+
+#conclusion2{
+    background-image: url("../img/placeholder_cat2.jpg") !important;
+    background-size: cover;
+    background-position: center;
+}
+
+#conclusion3{
+    background-image: url("../img/placeholder_cat3.jpg") !important;
+    background-size: cover;
+    background-position: center;
+}
+
+.conclusion img{
+    height: 100%;
+
+    /*width: 100%;*/
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #90a4ae;
+    margin: 1em 0;
+    padding: 0;
+}
+
 .parallax-container {
     height: 550px;
 }
@@ -12,12 +59,13 @@
 .icon-block {
     padding: 0 15px;
 }
+
 .icon-block .material-icons {
     font-size: inherit;
 }
 
 .main-text {
-    font-size: 21px;
+    font-size: 18px;
 }
 
 td {

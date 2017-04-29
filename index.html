@@ -34,7 +34,7 @@
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <br><br>
-        <h1 class="header center orange-text">A Path to Random Forest</h1>
+        <h1 class="header center title">A Path to Random Forest</h1>
         <div class="row center">
             <h5 class="header col s12 light">A visual explanation of the random forest algorithm</h5>
         </div>
@@ -51,10 +51,18 @@
             </div>
         </div>
 
-        <!-- A tree -->
+        <!-- ****************************************
+        ********* Single Tree Introduction **********
+        ***************************************** -->
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                Random forest is a machine learning algorithm that builds on other machine learning. To understand random forest, you should first understand decision trees. Decision trees work like flow-charts, asking a single question about the test item, then asking more questions until they reach a conclusion. Check one out below (start on the left). If you want to know more, check out <a href='http://www.r2d3.us/'>http://www.r2d3.us/</a>
+                Random forest is a crowdsourcing machine learning algorithm that builds on decision trees, another machine learning algorithm. <br/><br/>
+
+                Decision tree predicts the value of a target variable, e.g. classification of a data point into one of the given categories, based on its input attributes. To train a decision tree, we give it many examples, and the model tries to find the most informative attributes that help us predict a new instance. In the classification example, the algorithm looks for the most informative attributes that differentiate different categories from each other. <br/><br/>
+
+                The final structure of a trained decision tree looks like a flow-chart. It asks a single question about the test item, moves onto the next question based on the answer, and then asks more questions until it reaches a conclusion.<br/><br/>
+
+                Check one out below! Hover over the highlighted circles to see more details about the different components of a decision tree. If you want to know more, check out <a href='http://www.r2d3.us/'>R2D3's Intro to Decision Trees</a>.<br/><br/>
             </div>
         </div>
 
@@ -63,7 +71,16 @@
             </div>
         </div>
 
-        <!-- blocks -->
+        <!-- ****************************************
+        ************** Blocks Example ***************
+        ***************************************** -->
+        <div class="row">
+            <div class="main-text col s12 center divider-line">
+                <img width="40px" src="./img/blocks1.svg" />
+                <hr/>
+            </div>
+        </div>
+
         <div class="row">
             <div class="main-text col offset-s2 s8">
                 The problem with decision trees is that they either have blind spots based on the data that was used to create them in the first place. Random forest solves this by making a bunch of trees (a forest, also known as an ensemble) and combining the results together. <br/> <br/>
@@ -109,16 +126,63 @@
             <div class="main-text col offset-s2 s8" id="predictor_all">
             </div>
         </div>
+
+        <!-- ****************************************
+        *********** The Mushroom Problem ************
+        ***************************************** -->
+        <div class="row">
+            <div class="main-text col s12 center divider-line">
+                <img width="30px" src="./img/mushroom3.svg" />
+                <hr/>
+            </div>
+        </div>
+
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                If all trees were trained on exactly the same data, the trees would all be the same, so they would all predict the same answer, which wouldn’t be any better than just having one. Instead, each tree is given a subset of the data and trained on just that subset. As a result, each tree is a specialist in using some subset of the data.
+                This brings us back to the idea of random forest, where we
+                combine the power of individual predictors - decision trees
+                in this case - and achieve overall better result.
+                To illustrate how it works, we here introduce an exciting problem: <br/><br/>
+            </div>
+
+            <div class="main-text col s12 center">
+                <h3>
+                    Can I eat this mushroom?
+                </h3>
+                <img src='./img/mushroom2.png' width='200px'/><br/>
+            </div>
+
+            <div class="main-text col offset-s2 s8">
+                <br/><br/>
+                We have a dataset of 8000 mushrooms with 22 attributes,
+                and we want to predict if a mushroom is edible or poisonous
+                based on their attributes.
+            </div>
+        </div>
+
+        <!-- ****************************************
+        Training of Individual Trees of Sampled Data
+        ***************************************** -->
+        <div class="row">
+            <div class="main-text col s12 center divider-line">
+                <img height="25px" src="./img/grid1.svg" />
+                <hr/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                If all trees were trained on exactly the same data and attributes, the trees would all be the same, so they would all predict the same answer, which wouldn’t be any better than just having one. Instead, each tree is given a subset of the data and trained on just that subset. As a result, each tree is a specialist in using some subset of the data.
+
                 <br><br>
+
                 Below, we have a table where each row is a mushroom we can use to train our random forest,
                 and each column is some feature of the mushroom.
                 Only a small part of the table is shown because there are 8000 mushrooms and 22 features.
                 Use the radio buttons below to try selecting some data and training some trees for the forest.
             </div>
         </div>
+
         <div class="row">
             <div class="col s3 offset-s2">
                 <form action="">
@@ -140,72 +204,107 @@
                     </p>
                 </form>
             </div>
+
             <div class="col s5 main-text" style="color:#9e9e9e" id="step-text">
-                Click on "Select Rows" to select some mushrooms for training the first tree. They are selected with replacement, so some mushrooms might be included twice.
+                Click on "Select Rows" to select some mushrooms for training the first tree.
+                They are selected with replacement, so some mushrooms might be included twice.
             </div>
         </div>
+
         <div id="create-forest" class="row">
             <div id="create-forest-table" class="col s6 no-padding"></div>
             <div class="col s6 no-padding">
                 <svg style="width: 500px; height: 400px;"></svg>
             </div>
         </div>
-        <!-- <div class="row">
-        <div class="main-text col s12 center">
-        <img src="./img/tree-options.png" width="500" />
-    </div>
-</div> -->
+
+        <!-- ****************************************
+        ************** Training Result **************
+        ***************************************** -->
+        <div class="row">
+            <div class="main-text col s12 center divider-line">
+                <img height="40px" src="./img/flowchart1.svg" />
+                <hr/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                As each tree is trained on different data, they grow different
+                decision paths. Click each tree to see their individual judging
+                criteria for if a mushroom is edible or poisonous.
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12" id="treelist">
+            </div>
+            <div class="col s12">
+                <div id="collapsible_tree">
+                </div>
+            </div>
+        </div>
 
 
-<!-- Tree Zooming -->
-<div class="row">
-    <div class="main-text col offset-s2 s8">
-        As each tree is trained on different data, they grow different
-        decision paths. Click each tree to see their individual judging
-        criteria for if a mushroom is edible or poisonous.
-    </div>
-</div>
+        <!-- ****************************************
+        ******* Final Prediction with Voting ********
+        ***************************************** -->
+        <div class="row">
+            <div class="main-text col s12 center divider-line">
+                <img height="35px" src="./img/trees1.svg" />
+                <hr/>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                If we have a new mushroom the trees have never seen before,
+                we can use them to classify it. We let them take a vote,
+                and the majority wins. Click below for an animation of the process.
+            </div>
+        </div>
+        <div class="row">
+            <div class="main-text col offset-s4 s4 center">
+                <a class="waves-effect waves-light btn center" id="use-forest-button">Use Forest</a>
+            </div>
+        </div>
+        <div id="use-forest" class="row">
+            <div class="col s12 center">
+                <svg style="width: 1000px; height: 600px;"></svg>
+            </div>
+        </div>
 
-<div class="row">
-    <div class="col s12" id="treelist">
-    </div>
-    <div class="col s12">
-        <div id="collapsible_tree">
+        <!-- ****************************************
+        **************** Conclusion *****************
+        ***************************************** -->
+        <div class="row">
+            <div class="main-text col s12 center divider-line">
+                <img height="35px" src="./img/checklist1.svg" />
+                <hr/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="conclusion col s4 center" id="conclusion1">
+                <h5 class="white-text">random</h5>
+                <!-- <img src="./img/placeholder_cat1.jpg" /> -->
+            </div>
+            <div class="conclusion col s4 center" id="conclusion2">
+                <h5 class="white-text">forest</h5>
+            </div>
+            <div class="conclusion col s4 center" id="conclusion3">
+                <h5 class="white-text">meow</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                We hope you now understand machine learning better. If you would like to use this yourself, we used <a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Python's sklearn</a>.
+            </div>
         </div>
     </div>
-
-</div>
-<div class="row">
-    <div class="main-text col offset-s2 s8">
-        If we have a new mushroom the trees have never seen before, we can use them to classify it. We let them take a vote, and the majority wins. Click below for an animation of the process.
-    </div>
-</div>
-<div class="row">
-    <div class="main-text col offset-s4 s4 center">
-        <a class="waves-effect waves-light btn center" id="use-forest-button">Use Forest</a>
-    </div>
-</div>
-<div id="use-forest" class="row">
-    <div class="col s12 center">
-        <svg style="width: 1000px; height: 600px;"></svg>
-    </div>
-</div>
-<!-- <div class="row">
-<div class="main-text col s12 center">
-<img src="./img/forestDecision.png" width="300" />
-https://thenounproject.com/ecem.afacan.5/collection/trees/?oq=tree&cidx=0
-</div>
-</div> -->
-<div class="row">
-    <div class="main-text col offset-s2 s8">
-        We hope you now understand machine learning better. If you would like to use this yourself, we used <a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">Python's sklearn</a>.
-    </div>
-</div>
-</div>
 </div>
 
-<footer class="page-footer orange">
+<footer class="page-footer cyan darken-2">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">

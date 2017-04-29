@@ -12,7 +12,7 @@ function build_block(div_name, rows){
     var gridsize = 50,
     gapsize = 5,
     class_1_color = "#9de4e8",
-    class_0_color = "#ff8f2d",
+    class_0_color = "#006064",
     ncol = 10,
     w = 600,
     h = nrow * (gridsize + gapsize);
