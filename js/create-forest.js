@@ -108,7 +108,7 @@ d3.csv("data/formatted_mushroom_dataset.csv", function(error, response) {
   // If we want an SVG table: http://stackoverflow.com/questions/6987005/create-a-table-in-svg
   // https://www.vis4.net/blog/posts/making-html-tables-in-d3-doesnt-need-to-be-a-pain/
   var columns = [
-    { head: 'Edibility', cl: 'title', html: d3.f('edibility') },
+    { head: 'Edibility', cl: 'center title', html: d3.f('edibility') },
     { head: 'Cap Shape', cl: 'center', html: d3.f('cap shape') },
     { head: 'Cap Color', cl: 'center', html: d3.f('cap color') },
     { head: 'Bruises', cl: 'center', html: d3.f('bruise') },
