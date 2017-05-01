@@ -59,7 +59,7 @@ $('input[type=radio][name=group1]').on('change', function() {
     td.transition().delay(selectedColArr.length * 200).duration(2000)
     .style("background-color", function(d, i) {
       if (selectedColArr.indexOf(i) > -1) {
-        return "DarkBlue";
+        return "#2CA02C";
       }
     });
     //.selectAll('td')
@@ -67,7 +67,7 @@ $('input[type=radio][name=group1]').on('change', function() {
   } else if (this.id == 'train-tree-button') {
     var svg = d3.select('#create-forest svg');
     svg.append('circle').attr('r', 30).attr('fill', 'white').attr('cy', 150).attr('cx', 0)
-      .transition().duration(200).attr('fill', 'DarkBlue')
+      .transition().duration(200).attr('fill', '#2CA02C')
       .transition().duration(2000).ease(d3.easeBackInOut.overshoot(2)).attr('cx', getRandomInt(100, 300)).attr('cy', getRandomInt(50, 300))
       .transition().duration(500).ease(d3.easePoly).attr('r', 0)
       .on("end", growTree);
@@ -76,7 +76,7 @@ $('input[type=radio][name=group1]').on('change', function() {
       var x = parseFloat(this.getAttribute('cx'));
       var y = parseFloat(this.getAttribute('cy'));
       svg.append("image") //.attr("xlink:href","img/noun_337864_cc.svg")
-        .attr("xlink:href","img/tree_icons/tree_" + getRandomInt(0, 10) + ".png")
+        .attr("xlink:href","img/tree_icons/tree_" + getRandomInt(0, 10) + ".svg")
         .attr("x", x)
         .attr("y", y)
         .attr("width", 0)
@@ -108,7 +108,7 @@ d3.csv("data/formatted_mushroom_dataset.csv", function(error, response) {
   // If we want an SVG table: http://stackoverflow.com/questions/6987005/create-a-table-in-svg
   // https://www.vis4.net/blog/posts/making-html-tables-in-d3-doesnt-need-to-be-a-pain/
   var columns = [
-    { head: 'Edibility', cl: 'center title', html: d3.f('edibility') },
+    { head: 'Edibility', cl: 'center table-title', html: d3.f('edibility') },
     { head: 'Cap Shape', cl: 'center', html: d3.f('cap shape') },
     { head: 'Cap Color', cl: 'center', html: d3.f('cap color') },
     { head: 'Bruises', cl: 'center', html: d3.f('bruise') },

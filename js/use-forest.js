@@ -46,7 +46,7 @@
       .transition()
       .delay(3000)
       .duration(1000)
-      .attr('r', 30);
+      .attr('r', 20);
   }
   function reverse1() {
     svg.selectAll('.decision-dot')
@@ -74,9 +74,9 @@
       .duration(2000)
       .attr('cx', function(d) {
         if (d.color==="red") {
-          return 510 + 70 * redIndex.next().value;
+          return 510 + 50 * redIndex.next().value;
         } else {
-          return 510 - 70 * greenIndex.next().value;
+          return 510 - 50 * greenIndex.next().value;
         }
       })
       .attr('cy', 500);
@@ -146,7 +146,7 @@
     .enter()
     .append('image')
     .attr('class', 'd-tree')
-    .attr("xlink:href", function(d, i) {return "img/tree_icons/tree_" + i + ".png"})
+    .attr("xlink:href", function(d, i) {return "img/tree_icons/tree_" + i + ".svg"})
     .attr("width", 88)
     .attr("height", 91)
     // .attr("xlink:href","img/noun_337864_cc.svg")
