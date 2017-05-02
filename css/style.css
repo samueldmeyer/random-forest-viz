@@ -5,8 +5,14 @@
 *
 * Made By MaterializeCSS.com
 */
+body {
+    color: #263238;
+}
+
 .title{
-    color: #0097a7;
+    background: rgba(0, 0, 0, .5);
+    color: #00acc1;
+    padding: 30px !important;
 }
 
 .table-title {
@@ -15,12 +21,27 @@
 
 .divider-line{
     margin-top: 50px;
-    height: 50px;
+    height: 100px;
 }
 
 .conclusion{
     height: 300px;
     overflow: hidden;
+}
+
+.forest-background {
+    /*background-image: url("../img/forest_background2.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;*/
+
+    background: url("../img/forest_background2.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-bottom: 50px;
 }
 
 #conclusion1{
@@ -55,10 +76,10 @@ hr {
     margin: 1em 0;
     padding: 0;
 }
-
+/*
 .parallax-container {
-    height: 550px;
-}
+height: 550px;
+}*/
 
 .icon-block {
     padding: 0 15px;
