@@ -20,7 +20,7 @@ $('input[type=radio][name=group1]').on('change', function() {
     d3.selectAll("tr").style('background-color', 'white');
     d3.selectAll("th").style('background-color', 'white');
     d3.selectAll("td").style('background-color', null);
-    updateText(0, 'Click on "Select Rows" to select some mushrooms for training the first tree. They are selected with replacement, so some mushrooms might be included twice.');
+    updateText(0, 'Click on "Select Mushrooms" to select some mushrooms for training the first tree. They are selected with replacement, so some mushrooms might be included twice.');
   } else if (this.id == 'data-button') {
     d3.selectAll("td").style('background-color', null);
     var selectedRowArr = [];
@@ -36,7 +36,7 @@ $('input[type=radio][name=group1]').on('change', function() {
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
         .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
     }
-    updateText(2000, 'Click on "Select Columns" to select some features of the mushrooms for training the first tree. They are selected with replacement, so some features might be included twice.');
+    updateText(2000, 'Click on "Select Features" to select some features of the mushrooms for training the first tree. They are selected with replacement, so some features might be included twice.');
   } else if (this.id == 'column-select-option') {
     var selectedColArr = [0];
     d3.selectAll("th").style('background-color', 'white');

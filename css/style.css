@@ -11,7 +11,7 @@ body {
 
 .title{
     background: rgba(0, 0, 0, .5);
-    color: #00acc1;
+    color: #faebd7;
     padding: 30px !important;
 }
 
@@ -19,9 +19,12 @@ body {
     color: #00535b;
 }
 
-.divider-line{
-    margin-top: 50px;
-    height: 100px;
+.divider-line {
+    margin-top: 20px;
+}
+
+.divider-line h5 {
+  margin-bottom: 20px;
 }
 
 .conclusion{

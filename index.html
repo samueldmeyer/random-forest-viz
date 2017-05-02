@@ -5,6 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
     <title>A Path to Random Forest</title>
 
+    <!-- Icon links -->
+    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="apple-touch-icon-60x60.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="apple-touch-icon-152x152.png" />
+    <link rel="icon" type="image/png" href="favicon-196x196.png" sizes="196x196" />
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <link rel="icon" type="image/png" href="favicon-128.png" sizes="128x128" />
+    <meta name="application-name" content="&nbsp;"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+
     <!-- CSS  -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
@@ -53,11 +75,76 @@
         ***************************************** -->
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                Random forest is a crowdsourcing machine learning algorithm that builds on decision trees, another machine learning algorithm. <br/><br/>
+                If you are new to machine learning, you may have already run into "Random Forest". If not, you probably will soon.
+                Let us be a guidepost along the way. Now enter the forest.
+            </div>
+        </div>
 
-                Decision tree predicts the value of a target variable, e.g. classification of a data point into one of the given categories, based on its input attributes. To train a decision tree, we give it many examples, and the model tries to find the most informative attributes that help us predict a new instance. In the classification example, the algorithm looks for the most informative attributes that differentiate different categories from each other. <br/><br/>
+        <!-- ****************************************
+        *********** The Mushroom Problem ************
+        ***************************************** -->
+        <div class="row">
+            <div class="divider"></div>
+            <div class="main-text col s12 center divider-line">
+                <h5> The Mushroom Problem </h5>
+                <img width="30px" src="./img/mushroom3.svg" />
+            </div>
+        </div>
 
-                The final structure of a trained decision tree looks like a flow-chart. It asks a single question about the test item, moves onto the next question based on the answer, and then asks more questions until it reaches a conclusion.<br/><br/>
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                To introduce random forest, we need to start with a real-world example.
+                <br>
+                <br>
+                <i>
+                You are lost in the woods, and you are running out of food.
+                But you are surrounded by mushrooms. Because you planned ahead, you have a dataset of 8000 kinds of mushrooms and whether they are safe to eat.
+                Unfortunately, the latest mushroom you have come across is not in your list,
+                so you need to decide whether it is safe to eat based on similarity to other mushrooms.
+                The grand problem is:</i><br/><br/>
+            </div>
+
+            <div class="main-text col s12 center">
+                <h3>
+                    Can I eat this mushroom?
+                </h3>
+                <img src='./img/mushroom2.png' width='200px'/><br/>
+            </div>
+
+            <div class="main-text col offset-s2 s8">
+                <br/><br/>
+                The dataset has 22 descriptors for mushrooms, such as the cap shape, which can be convex, bell, flat, or sunken.
+                Similarly, the cap color can be brown, yellow, white, or gray.
+                Using all these descriptors, called <i>features</i>
+                in machine learning, we will decide if you should eat this mushroom.
+            </div>
+        </div>
+
+        <!-- ****************************************
+        ********* Single Tree Introduction **********
+        ***************************************** -->
+        <div class="row">
+            <div class="divider"></div>
+            <div class="main-text col s12 center divider-line">
+                <h5> Decision Trees </h5>
+                <!-- <img width="30px" src="./img/mushroom3.svg" /> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="main-text col offset-s2 s8">
+                To understand random forest, you first need to understand decision trees.
+                Random forest builds on top of decision trees.
+                <br><br>
+                Decision trees predict the value of one feature of a new data point.
+                Here, we use them to predict whether or not the new mushroom will be poisonous
+                based on the other 22 features.
+                To train a decision tree, we give it many examples, and the model tries to
+                find which feature can make the best decision on its own. If knowing
+                whether the mushroom stalk's surface is the best predictor (without looking at other features),
+                the decision tree uses it first. Then after splitting the examples into two categories,
+                it looks for which feature is best within each of those categories.<br/><br/>
+
+                The final structure of a trained decision tree looks like a flowchart. It asks a single question about the test item, moves onto the next question based on the answer, and then asks more questions until it reaches a conclusion.<br/><br/>
 
                 Check one out below! Hover over the highlighted circles to see more details about the different components of a decision tree. If you want to know more, check out <a href='http://www.r2d3.us/'>R2D3's Intro to Decision Trees</a>.<br/><br/>
             </div>
@@ -83,7 +170,10 @@
 
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                The problem with decision trees is that they either have blind spots based on the data that was used to create them in the first place. Random forest solves this by making a bunch of trees (a forest, also known as an ensemble) and combining the results together. <br/> <br/>
+                The problem with decision trees is that they either have blind spots based on the data that
+                was used to create them in the first place.
+                Random forest solves this by making a bunch of trees (a forest, also known as an ensemble)
+                and combining the results together. <br/> <br/>
 
                 For example, below is a actual outcome we'd like to predict.
             </div>
@@ -127,39 +217,7 @@
             </div>
         </div>
 
-        <!-- ****************************************
-        *********** The Mushroom Problem ************
-        ***************************************** -->
-        <div class="row">
-            <div class="main-text col s12 center divider-line">
-                <img width="30px" src="./img/mushroom3.svg" />
-                <h5> The Mushroom Problem </h5>
-                <hr/>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="main-text col offset-s2 s8">
-                This brings us back to the idea of random forest, where we
-                combine the power of individual predictors - decision trees
-                in this case - and achieve overall better result.
-                To illustrate how it works, we here introduce an exciting problem: <br/><br/>
-            </div>
-
-            <div class="main-text col s12 center">
-                <h3>
-                    Can I eat this mushroom?
-                </h3>
-                <img src='./img/mushroom2.png' width='200px'/><br/>
-            </div>
-
-            <div class="main-text col offset-s2 s8">
-                <br/><br/>
-                We have a dataset of 8000 mushrooms with 22 attributes,
-                and we want to predict if a mushroom is edible or poisonous
-                based on their attributes.
-            </div>
-        </div>
 
         <!-- ****************************************
         Training of Individual Trees of Sampled Data
@@ -174,14 +232,19 @@
 
         <div class="row">
             <div class="main-text col offset-s2 s8">
-                If all trees were trained on exactly the same data and attributes, the trees would all be the same, so they would all predict the same answer, which wouldn’t be any better than just having one. Instead, each tree is given a subset of the data and trained on just that subset. As a result, each tree is a specialist in using some subset of the data.
+                If all trees were trained on exactly the same mushrooms and features, the trees would all be the same,
+                so they would all predict the same answer, which wouldn’t be any better than just having one.
+                Instead, each tree is given a subset of the data and trained on just that subset.
+                As a result, each tree is a specialist in using some subset of the data.
 
                 <br><br>
 
                 Below, we have a table where each row is a mushroom we can use to train our random forest,
                 and each column is some feature of the mushroom.
-                Only a small part of the table is shown because there are 8000 mushrooms and 22 features.
-                Use the radio buttons below to try selecting some data and training some trees for the forest.
+                Only a small part of the table is shown
+                (remember that we have 8000 mushrooms and 22 features for each).
+                Use the radio buttons below to walk through selecting some data
+                and training some trees for the forest.
             </div>
         </div>
 
@@ -194,11 +257,11 @@
                     </p>
                     <p>
                         <input name="group1" type="radio" id="data-button" />
-                        <label for="data-button">Select Rows</label>
+                        <label for="data-button">Select Mushrooms</label>
                     </p>
                     <p>
                         <input name="group1" type="radio" id="column-select-option" />
-                        <label for="column-select-option">Select Columns</label>
+                        <label for="column-select-option">Select Features</label>
                     </p>
                     <p>
                         <input name="group1" type="radio" id="train-tree-button" />
@@ -208,7 +271,7 @@
             </div>
 
             <div class="col s5 main-text" style="color:#9e9e9e" id="step-text">
-                Click on "Select Rows" to select some mushrooms for training the first tree.
+                Click on "Select Mushrooms" to select some mushrooms for training the first tree.
                 They are selected with replacement, so some mushrooms might be included twice.
             </div>
         </div>
@@ -235,7 +298,8 @@
             <div class="main-text col offset-s2 s8">
                 As each tree is trained on different data, they grow different
                 decision paths. Click each tree to see their individual judging
-                criteria for if a mushroom is edible or poisonous.
+                criteria for if a mushroom is edible or poisonous. You can click
+                on blue decision nodes to expand the tree.
             </div>
         </div>
 
@@ -264,7 +328,8 @@
             <div class="main-text col offset-s2 s8">
                 If we have a new mushroom the trees have never seen before,
                 we can use them to classify it. We let them take a vote,
-                and the majority wins. Click below for an animation of the process.
+                and the majority wins. Click on the radio buttons below to walk
+                through the process.
             </div>
         </div>
         <div class="row">
