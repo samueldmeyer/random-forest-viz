@@ -15,25 +15,34 @@ body {
     padding: 30px !important;
 }
 
+.central-question{
+    font-family: 'Caveat', cursive;
+    font-size: 40px !important;
+}
+
 .table-title {
     color: #00535b;
 }
 
-.divider-line {
-    margin-top: 20px;
-}
-
-.divider-line h5 {
-  margin-bottom: 20px;
+h4 {
+    font-family: 'Copse', serif;
+    color: #455a64;
 }
 
 .divider {
-  margin-top: 60px;
-  margin-bottom: 20px;
+    margin-top: 60px;
+    margin-bottom: 20px;
 }
 
 .conclusion{
-    height: 300px;
+    height: 250px;
+    overflow: hidden;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.conclusion-icon{
+    height: 150px;
     overflow: hidden;
 }
 
@@ -50,30 +59,6 @@ body {
     -o-background-size: cover;
     background-size: cover;
     margin-bottom: 50px;
-}
-
-#conclusion1{
-    background-image: url("../img/placeholder_cat1.jpg") !important;
-    background-size: cover;
-    background-position: center;
-}
-
-#conclusion2{
-    background-image: url("../img/placeholder_cat2.jpg") !important;
-    background-size: cover;
-    background-position: center;
-}
-
-#conclusion3{
-    background-image: url("../img/placeholder_cat3.jpg") !important;
-    background-size: cover;
-    background-position: center;
-}
-
-.conclusion img{
-    height: 100%;
-
-    /*width: 100%;*/
 }
 
 hr {
@@ -108,6 +93,10 @@ td {
 tr {
     background-color: white;
     transition: background-color 0.5s ease;
+}
+
+.page-footer{
+    font-size: 14px;
 }
 
 /*tr:hover {

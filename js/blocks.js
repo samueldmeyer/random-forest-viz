@@ -8,7 +8,7 @@ build_block("#predictor_all", ["predictor_1", "predictor_2", "predictor_3"]);
 function build_block(div_name, rows){
     var nrow = rows.length;
 
-    var margin = {top: 30, right: 90, bottom: 30, left: 120};
+    var margin = {top: 30, right: 90, bottom: 30, left: 180};
     var gridsize = 50,
     gapsize = 5,
     class_1_color = "#9de4e8",
