@@ -176,7 +176,7 @@
         reverse2();
       }
       currentState = 1;
-      updateText(3000, 'Click on "Vote" to have each tree decide whether it believes the mushroom is poinsonous or not.');
+      updateText(3000, 'Click on "Vote" to have each tree decide whether it believes the mushroom is poisonous or not.');
     } else if (this.id == 'vote-use') {
       if (currentState === 1) {
         transition2();

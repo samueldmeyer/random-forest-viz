@@ -17,9 +17,10 @@ function updateText(delay, text) {
 
 $('input[type=radio][name=group1]').on('change', function() {
   if (this.id == 'start-build') {
-    d3.selectAll("tr").style('background-color', 'white');
-    d3.selectAll("th").style('background-color', 'white');
-    d3.selectAll("td").style('background-color', null);
+    d3.selectAll("tr")
+      .style('background-color', 'white').style('opacity', 1);
+    d3.selectAll("th, td")
+      .style('background-color', 'white').style('opacity', 1);
     updateText(0, 'Click on "Select Mushrooms" to select some mushrooms for training the first tree. They are selected with replacement, so some mushrooms might be included twice.');
   } else if (this.id == 'data-button') {
     d3.selectAll("td").style('background-color', null);
@@ -36,7 +37,11 @@ $('input[type=radio][name=group1]').on('change', function() {
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
         .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
     }
-    updateText(2000, 'Click on "Select Features" to select some features of the mushrooms for training the first tree. They are selected with replacement, so some features might be included twice.');
+    // hide rows not selected
+    d3.selectAll("tbody tr").filter(function(d, i) {
+      return selectedRowArr.indexOf(i + 1) === -1; // +1 to deal with selecting only body rows
+    }).transition().duration(1000).delay(selectedRowArr.length * 200).style("opacity", 0.05);
+    updateText(2500, 'Click on "Select Features" to select some features of the mushrooms for training the first tree. They are selected with replacement, so some features might be included twice.');
   } else if (this.id == 'column-select-option') {
     var selectedColArr = [0];
     d3.selectAll("th").style('background-color', 'white');
@@ -48,21 +53,28 @@ $('input[type=radio][name=group1]').on('change', function() {
       d3.selectAll("th").filter(function (d, i) { return i === col;})
         .style('background-color', 'white')
         .transition().delay(j * 100).duration(200).style('background-color', 'blue')
-        .transition().delay(j * 100).duration(200).style('background-color', 'LightBlue');
+        .transition().delay(j * 100).duration(200).style('background-color', 'white');
     }
     var tr = d3.selectAll("tbody tr").filter(function(d, i) {
       return selectedRowsList.indexOf(i + 1) > -1;
     });
-    console.log(tr);
     var td = tr.selectAll("td");
-    // debugger;
+    // color green
     td.transition().delay(selectedColArr.length * 200).duration(2000)
     .style("background-color", function(d, i) {
       if (selectedColArr.indexOf(i) > -1) {
         return "#2CA02C";
       }
     });
-    //.selectAll('td')
+    // hide unselected columns
+    var tdNotSelected = d3.selectAll("tr").selectAll("td, th")
+      .filter(function(d, i) {
+        return selectedColArr.indexOf(i) === -1;
+      });
+    tdNotSelected.transition().duration(1000).delay(selectedColArr.length * 200)
+      .style("opacity", 0.05).style("background-color", "white");
+    d3.selectAll("tr").transition().style('background-color', 'white')
+      .duration(1000).delay(selectedColArr.length * 200);
     updateText(800, 'Click on "Train Decision Tree" to train a tree. Using the selected features and mushrooms, we add a tree to the forest.');
   } else if (this.id == 'train-tree-button') {
     var svg = d3.select('#create-forest svg');

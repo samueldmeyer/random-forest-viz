@@ -32,7 +32,6 @@ function build_block(div_name, rows){
     };
 
     d3.csv(blocks_filename, function(d){
-        console.log(d);
         var rects = svg.selectAll("rect")
         .data(d)
         .enter()
