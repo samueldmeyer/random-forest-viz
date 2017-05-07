@@ -64,9 +64,15 @@
     }
     var redIndex = idMaker();
     var greenIndex = idMaker();
-    svg.selectAll('.decision-dot')
-      .data(treeList)
-      .attr('fill', 'gray')
+    var decisionDot = svg.selectAll('.decision-dot').data(treeList);
+    decisionDot.enter()
+      .append('circle')
+      .attr('class', 'decision-dot')
+      .attr('fill', "gray") // d3.f('color')
+      .attr('cy', function(d) {return d.y + 40;}) //d3.f('y'))
+      .attr('cx', function(d) {return d.x + 40;}) // d3.f('x'))
+      .attr('r', 20);
+    decisionDot.attr('fill', 'gray').attr('r', 20)
       .transition()
       .duration(1000)
       .attr('fill', function(d) {return d.color === "green" ? "rgb(198, 239, 213)" : "rgb(180, 156, 193)"})
@@ -79,7 +85,7 @@
           return 510 - 50 * greenIndex.next().value;
         }
       })
-      .attr('cy', 500);
+      .attr('cy', 450);
   }
   function reverse2() {
     svg.selectAll('.decision-dot')
@@ -92,25 +98,37 @@
   }
   function transition3() {
     svg.append("text")
-      .text("Mushroom is edible!")
+      .text("4 vote edible")
       .attr("font-family", 'Roboto", sans-serif')
       .attr("font-size", "10px")
       .attr("fill", "black")
-      .attr("x", 440)
-      .attr("y", 450)
+      .attr("x", 400)
+      .attr("y", 512)
       .transition()
       .duration(1000)
       .ease(d3.easeBackOut.overshoot(2))
-      .attr("x", 400)
-      .attr("y", 450)
+      .attr("x", 360)
+      .attr("y", 512)
       .attr('font-size', '20px');
+    setTimeout(function() {
+      svg.append("text")
+      .text("1 votes poisonous")
+      .attr("font-family", 'Roboto", sans-serif')
+      .attr("font-size", "10px")
+      .attr("fill", "black")
+      .attr("x", 580)
+      .attr("y", 512)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeBackOut.overshoot(2))
+      .attr("x", 540)
+      .attr("y", 512)
+      .attr('font-size', '20px');
+    }, 1000);
   }
   function reverse3() {
-    svg.select('text')
-    .transition()
-    .attr('x', 440)
-    .attr('font-size', '10px')
-    .remove();
+    svg.selectAll('text')
+      .remove();
   }
   var svg = d3.select('#use-forest svg');
   var treeList = [
@@ -152,55 +170,61 @@
     // .attr("xlink:href","img/noun_337864_cc.svg")
     .attr('x', d3.f('x'))
     .attr('y', d3.f('y'));
-  $('input[type=radio][name=use-forest-radio]').on('change', function() {
-    if (this.id == 'start-use') {
-      if (currentState === 1) {
-        reverse1();
-      } else if (currentState === 2) {
-        reverse2();
-        reverse1();
-      } else if (currentState === 3) {
-        reverse3();
-        reverse2();
-        reverse1();
-      }
-      currentState = 0;
-      updateText(3000, 'Click on "Send Copies" to send copies of the features of the mushroom to each tree.');
-    } else if (this.id == 'copies-use') {
-      if (currentState === 0) {
+
+  var state0Text = 'First, we send copies of the features of the mushroom to each tree.';
+  var state1Text = 'Next, we have each tree decide whether it believes the mushroom is poisonous or not.';
+  var state2Text = 'Next, we tally the votes to see the final result.';
+  var state3Text = 'By a vote of 4-1, the forest has decided that the mushroom is edible.';
+  $('#use-step-text').text(state0Text);
+  $('#use-forest-next').on('click', function() {
+    switch (currentState) {
+      case 0:
         transition1();
-      } else if (currentState === 2) {
-        reverse2();
-      } else if (currentState === 3) {
-        reverse3();
-        reverse2();
-      }
-      currentState = 1;
-      updateText(3000, 'Click on "Vote" to have each tree decide whether it believes the mushroom is poisonous or not.');
-    } else if (this.id == 'vote-use') {
-      if (currentState === 1) {
+        updateText(3000, state1Text);
+        $('#use-forest-back').removeClass('disabled');
+        break;
+      case 1:
         transition2();
-      } else if (currentState === 0) {
-        transition1();
-        setTimeout(transition2, 4500);
-      } else if (currentState === 3) {
+        updateText(3000, state2Text);
+        break;
+      case 2:
+        transition3();
+        updateText(2000, state3Text);
+        $('#use-forest-next').addClass('disabled');
+        break;
+      case 3:
+        break;
+      default:
+        break;
+    }
+    if (currentState < 3) {
+      currentState += 1;
+    }
+  });
+
+  $('#use-forest-back').on('click', function() {
+    switch (currentState) {
+      case 0:
+        break;
+      case 1:
+        reverse1();
+        updateText(1000, state0Text);
+        $('#use-forest-back').addClass('disabled');
+        break;
+      case 2:
+        reverse2();
+        updateText(1000, state1Text);
+        break;
+      case 3:
         reverse3();
-      }
-      currentState = 2;
-      updateText(2000, 'Click on "End" to see the final result.');
-    } else if (this.id == 'end-use') {
-      if (currentState === 2) {
-        transition3();
-      } else if (currentState === 1) {
-        transition2();
-        transition3();
-      } else if (currentState === 0) {
-        transition1();
-        setTimeout(transition2, 4500);
-        setTimeout(transition3, 4500);
-      }
-      currentState = 3;
-      updateText(1000, 'Based on the random forest, the mushroom is probably not poinsonous. Enjoy!');
+        updateText(0, state2Text);
+        $('#use-forest-next').removeClass('disabled');
+        break;
+      default:
+        break;
+    }
+    if (currentState > 0) {
+      currentState -= 1;
     }
   });
 })();

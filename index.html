@@ -231,7 +231,7 @@
                     and each column is some feature of the mushroom.
                     Only a small part of the table is shown
                     (remember that we have 8000 mushrooms and 22 features for each).
-                    Use the radio buttons below to walk through selecting some data
+                    Use the buttons below to walk through selecting some data
                     and training some trees for the forest.
                 </div>
             </div>
@@ -248,8 +248,8 @@
             </div>
             <div class="row">
               <div class="col s12 center">
-                <a class="waves-effect waves-light btn disabled" id="create-forest-back"><!-- <i class="material-icons left">cloud</i> -->Back</a>
-                <a class="waves-effect waves-light btn" id="create-forest-next"><!--<i class="material-icons right">play_arrow</i> -->Next</a>
+                <a class="waves-effect waves-light btn disabled" id="create-forest-back">Back</a>
+                <a class="waves-effect waves-light btn" id="create-forest-next">Next</a>
               </div>
             </div>
 
@@ -304,39 +304,25 @@
                 <div class="main-text col offset-s2 s8">
                     If we have a new mushroom the trees have never seen before,
                     we can use them to classify it. We let them take a vote,
-                    and the majority wins. Click on the radio buttons below to walk
+                    and the majority wins. Click on the buttons below to walk
                     through the process.
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s3 offset-s2">
-                    <form action="">
-                        <p>
-                            <input name="use-forest-radio" type="radio" id="start-use" checked />
-                            <label for="start-use">Start</label>
-                        </p>
-                        <p>
-                            <input name="use-forest-radio" type="radio" id="copies-use" />
-                            <label for="copies-use">Send Copies</label>
-                        </p>
-                        <p>
-                            <input name="use-forest-radio" type="radio" id="vote-use" />
-                            <label for="vote-use">Vote</label>
-                        </p>
-                        <p>
-                            <input name="use-forest-radio" type="radio" id="end-use" />
-                            <label for="end-use">End</label>
-                        </p>
-                    </form>
-                </div>
-                <div class="col s5 main-text" style="color:#9e9e9e" id="use-step-text">
-                    Click on "Send Copies" to send copies of the features of the mushroom to each tree.
                 </div>
             </div>
             <div id="use-forest" class="row">
                 <div class="col s12 center">
-                    <svg style="width: 1000px; height: 600px;"></svg>
+                    <svg></svg>
                 </div>
+            </div>
+            <div class="row">
+              <div class="col s6 offset-s3 main-text center" id="use-step-text" style="height: 60px">
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 center">
+                <a class="waves-effect waves-light btn disabled" id="use-forest-back">Back</a>
+                <a class="waves-effect waves-light btn" id="use-forest-next">Next</a>
+              </div>
             </div>
 
             <!-- ****************************************

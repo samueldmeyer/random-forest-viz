@@ -1,9 +1,5 @@
 /* Custom Stylesheet */
 /**
-* Use this file to override Materialize files so you can update
-* the core Materialize files in the future
-*
-* Made By MaterializeCSS.com
 */
 body {
     color: #263238;
@@ -99,14 +95,18 @@ tr {
     font-size: 14px;
 }
 
-/*tr:hover {
-background-color: green;
-}*/
-
 .highlight {
     background-color: yellow;
 }
 
 .no-padding {
     padding: 0;
+}
+
+#use-forest svg {
+  width: 960px;
+  height: 550px;
+  border-style: solid;
+  border-radius: 1px;
+  border-color: #bdbdbd;
 }
