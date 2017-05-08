@@ -119,21 +119,40 @@
 
             <div class="row">
                 <div class="main-text col offset-s2 s8">
-                    To understand random forest, you first need to understand decision trees.
-                    Random forest builds on top of decision trees.<br><br>
+                    A random forest consists of a collection of decision trees,
+                    each of which works like a rule based predictor.<br/><br/>
 
-                    Decision trees predict the value of one feature of a new data point.
-                    Here, we use them to predict whether or not the new mushroom will be poisonous
-                    based on the other 22 features.
-                    To train a decision tree, we give it many examples, and the model tries to
-                    find which feature can make the best decision on its own. If knowing
-                    whether the mushroom stalk's surface is the best predictor (without looking at other features),
-                    the decision tree uses it first. Then after splitting the examples into two categories,
-                    it looks for which feature is best within each of those categories.<br/><br/>
+                    Decision trees predict the label or value, e.g. edible or not,
+                     of a new datapoint based on its features.
+                    Here, we use decision trees to predict whether or not the new mushroom will be poisonous
+                    based on its 22 features, e.g. mushroom cap shape and color.<br/><br/>
 
-                    The final structure of a trained decision tree looks like a flowchart. It asks a single question about the test item, moves onto the next question based on the answer, and then asks more questions until it reaches a conclusion.<br/><br/>
+                    To train a decision tree, we give it many examples.
+                    In the mushroom problem, the model uses the dataset of 8000 mushrooms
+                    to find out a sequence of test of features that will best separate
+                    edible mushrooms from poisonous ones.
 
-                    Check one out below! Hover over the highlighted circles to see more details about the different components of a decision tree. If you want to know more, check out <a href='http://www.r2d3.us/'>R2D3's Intro to Decision Trees</a>.<br/><br/>
+                    If whether a mushroom stalk's surface is smooth or not is the most
+                    telling feature of all in helping us predict if the mushroom is edible,
+                    the decision tree uses it first. Then for each of the two outcomes,
+                    i.e. smooth or not smooth, the decision tree looks for the
+                    next best differentiate feature respectively.
+                    It keeps doing this iteratively, and only stops
+                    either when all the mushrooms left has the same value,
+                    e.g. all edible or poisonous,
+                    or when it hits some predetermined stop criteria.
+                    <br/><br/>
+
+                    The final structure of a trained decision tree looks like a flowchart.
+                    It asks a single question about the test item,
+                    moves onto the next question based on the answer,
+                    and then asks more questions until it reaches a conclusion.<br/><br/>
+
+                    Check one out below! Hover over the highlighted circles to
+                    see more details about the different components of a decision tree.
+                    If you want to know more, check out
+                    <a href='http://www.r2d3.us/'>R2D3's Intro to Decision Trees</a>.
+                    <br/><br/>
                 </div>
             </div>
 
@@ -156,13 +175,22 @@
 
             <div class="row">
                 <div class="main-text col offset-s2 s8">
-                    The problem with decision trees is that they either have blind spots based on the data that
-                    was used to create them in the first place.
-                    Random forest solves this by making a bunch of trees (a forest, also known as an ensemble)
+                    While decision trees are great, they sometimes makes mistakes
+                    because they rely too much on the specific dataset they are given,
+                    which can be noisy or contains outliers.
+
+                    Random forest helps with this problem this by making a
+                    bunch of slightly different trees (a forest, also known as an ensemble)
                     and combining the results together. <br/> <br/>
 
-                    For example, below is a list of 10 objects, and we are trying
-                    to train a predictor, e.g. decision tree to predict the color of each object.
+                    To see how this works, let's consider the following mini made up example,
+                    where we use 3 decision trees to predict the edibility of 10 mushrooms. <br/><br/>
+
+                    Below is the actual edibility of the 10 mushrooms -
+                    this is what we are trying to predict with our decision trees.
+                    In the training process, we know the answer before hand,
+                    and we are trying to train the decision tree to
+                    give us the same output as the target answer.
                 </div>
             </div>
 
@@ -173,8 +201,8 @@
 
             <div class="row">
                 <div class="main-text col offset-s2 s8">
-                    When we use one predictor, even a pretty good one, sometimes it makes mistakes.
-                    In this example, predictor 1 got the colors of the 2nd and 4th object wrong.
+                    Below is the prediction of our 1st example decision tree.
+                    It did a pretty good job overall, and only misclassifies the 2nd and 4th mushroom.
                 </div>
             </div>
 
@@ -185,8 +213,10 @@
 
             <div class="row">
                 <div class="main-text col offset-s2 s8">
-                    A different predictor might give pretty good but slightly different predictions.
-                    Predictor 2 missed the prediction on the 7th and 9th object.
+                    Below is the prediction of our 2nd example decision tree.
+                    It also gives pretty good but slightly different predictions.
+                    Unlike the 1st decision tree, it got the 2nd and 4th mushroom right,
+                    but misclassifies the 7th and 9th mushroom.
                 </div>
             </div>
 
@@ -197,15 +227,47 @@
 
             <div class="row">
                 <div class="main-text col offset-s2 s8">
-                    What if we can combine the power of the individual predictors to minimize our mistakes?
+                    Now let's add a 3rd example decision tree, which misclassifies the 2nd and 5th mushroom.
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="main-text col offset-s1 s10" id="predictor_3">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="main-text col offset-s2 s8">
+                    What happens if we combine the outputs of all the decision trees?
+                    We will take the prediction most trees agree on (majority vote) as the final prediction.
                 </div>
             </div>
 
             <div class="row">
                 <div class="main-text col offset-s1 s10" id="predictor_all">
                 </div>
+
+            </div>
+            <div class="row">
+                <div class="main-text col offset-s2 s8">
+                <hr/>
+
+            </div>
+                <div class="main-text col offset-s1 s10" id="combined_result">
+                </div>
             </div>
 
+            <div class="row">
+                <div class="main-text col offset-s2 s8">
+                    We only misclassified 1 mushroom using the combined result from the trees,
+                    50% less error rate than the individual trees! <br/><br/>
+
+                    This is why the random forest algorithm is so powerful.
+                    It combines the power of individual decision trees,
+                    while at the same time producing more robust results
+                    because it's less likely to make mistakes.
+                </div>
+            </div>
             <!-- ****************************************
             Training of Individual Trees of Sampled Data
             ***************************************** -->
@@ -220,10 +282,12 @@
 
             <div class="row">
                 <div class="main-text col offset-s2 s8">
-                    If all trees were trained on exactly the same mushrooms and features, the trees would all be the same,
-                    so they would all predict the same answer, which wouldn’t be any better than just having one.
+                    If all decision trees were trained on exactly
+                    the same mushrooms and features, the trees would all be the same,
+                    so they would all predict the same answer,
+                    which wouldn’t be any better than just having one.
                     Instead, each tree is given a subset of the data and trained on just that subset.
-                    As a result, each tree is a specialist in using some subset of the data.
+                    As a result, each decision tree is a specialist in using some subset of the data.
 
                     <br><br>
 
@@ -254,8 +318,6 @@
             </div>
 
 
-
-
             <!-- ****************************************
             ************** Training Result **************
             ***************************************** -->
@@ -284,6 +346,9 @@
                     <div id="collapsible_tree">
                     </div>
                 </div>
+                <div class="col s10 tree_legend">
+                <img height="40px" src="./img/dt_legend.svg" />
+            </div>
             </div>
 
 
@@ -406,6 +471,9 @@
             </div>
         </div>
     </footer>
+
+
+    <!-- Mushroom by Daria Moskvina from the Noun Project 867068 https://thenounproject.com/dasska/collection/mushroom/-->
 
     <!-- Need to make sure if we should talk about bagging
 

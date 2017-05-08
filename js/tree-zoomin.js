@@ -231,7 +231,7 @@
         var nodeExit = node.exit().transition()
         .duration(duration)
         .attr("transform", function(d) {
-            return "translate(" + (source.y + 20) + "," + (source.x + rect_height/2)+ ")";
+            return "translate(" + (source.y + 20) + "," + (source.x + rect_height)+ ")";
         })
         .remove();
 

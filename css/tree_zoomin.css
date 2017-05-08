@@ -21,12 +21,10 @@
 #collapsible_tree{
     width: 960px;
     height:500px;
-    /*border-top-style: dotted;
-    border-right-style: solid;
-    border-bottom-style: dotted;*/
-    border-style: solid;
+    background-color: #eceff1;
+    /*border-style: solid;
     border-radius: 1px;
-    border-color: #bdbdbd;
+    border-color: #bdbdbd;*/
 }
 
 #tree_list li{
