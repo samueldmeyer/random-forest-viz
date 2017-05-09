@@ -225,7 +225,9 @@
         // Update the node attributes and style
         nodeUpdate.select('rect.node')
         .style("fill", get_fill_color)
-        .attr('cursor', 'pointer');
+        if (!tree_demo) {
+          nodeUpdate.select('rect.node').attr('cursor', 'pointer');
+        }
 
         // Remove any exiting nodes
         var nodeExit = node.exit().transition()
