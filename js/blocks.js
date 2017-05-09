@@ -54,8 +54,8 @@
 
             rects.append('image')
             .attr('xlink:href',function(d){
-                return d.value == 1? '../img/mushroom_edible1.svg':
-                '../img/mushroom_poisonous1.svg';
+                return d.value == 1? 'img/mushroom_edible1.svg':
+                'img/mushroom_poisonous1.svg';
             })
             .attr("x", function(d, i) {
                 return ((i%ncol) * (gridsize + gapsize)) + 0.25 * gridsize;
