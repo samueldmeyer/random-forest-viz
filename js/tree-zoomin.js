@@ -1,3 +1,10 @@
+// Code Credits
+// The following code is adapted and derived from the following 2 great sources:
+// Collapsible (v4): https://bl.ocks.org/d3noob/43a860bc0024792f8803bba8ca0d5ecd
+// Decision tree with color and width of the path (v3): http://bl.ocks.org/pprett/3813537
+// It also uses this amazing annotation library by Susie Lu
+// Annotations: http://d3-annotation.susielu.com
+
 (function () {  // IIFE to clean globals
     // Set the dimensions and margins of the diagram
     var margin = {top: 20, right: 90, bottom: 30, left: 120},

@@ -1,3 +1,6 @@
+// visualization inspired by
+// Day / Hour Heatmap: http://bl.ocks.org/tjdecke/5558084
+
 (function () {
 
     build_block("#actual", ["target"]);
