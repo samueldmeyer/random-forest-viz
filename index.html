@@ -120,7 +120,7 @@
             <div class="row">
                 <div class="main-text col offset-s2 s8">
                     A random forest consists of a collection of decision trees,
-                    each of which works like a rule based predictor.<br/><br/>
+                    each of which works like a rule-based predictor.<br/><br/>
 
                     Decision trees predict the label or value, e.g. edible or not,
                      of a new datapoint based on its features.
@@ -180,10 +180,10 @@
                     which can be noisy or contains outliers.
 
                     Random forest helps with this problem this by making a
-                    bunch of slightly different trees (a forest, also known as an ensemble)
+                    bunch of slightly different trees (a forest, also known as an <i>ensemble</i>)
                     and combining the results together. <br/> <br/>
 
-                    To see how this works, let's consider the following mini made up example,
+                    To see how this works, let's consider the following example,
                     where we use 3 decision trees to predict the edibility of 10 mushrooms. <br/><br/>
 
                     Below is the actual edibility of the 10 mushrooms -
@@ -202,7 +202,8 @@
             <div class="row">
                 <div class="main-text col offset-s2 s8">
                     Below is the prediction of our 1st example decision tree.
-                    It did a pretty good job overall, and only misclassifies the 2nd and 4th mushroom.
+                    It did a pretty good job overall, and only
+                    <i>misclassifies</i> (predicts wrong) the 2nd and 4th mushroom.
                 </div>
             </div>
 
@@ -259,13 +260,13 @@
 
             <div class="row">
                 <div class="main-text col offset-s2 s8">
-                    We only misclassified 1 mushroom using the combined result from the trees,
-                    50% less error rate than the individual trees! <br/><br/>
+                    Using the three decision trees,
+                    we reduced the error down to only one misclassification. Using many more trees
+                    can make predictions even better.<br/><br/>
 
                     This is why the random forest algorithm is so powerful.
-                    It combines the power of individual decision trees,
-                    while at the same time producing more robust results
-                    because it's less likely to make mistakes.
+                    It combines the power of individual decision trees
+                    to produce more robust results.
                 </div>
             </div>
             <!-- ****************************************
