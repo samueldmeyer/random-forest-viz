@@ -4,6 +4,18 @@ var createForestData;
 var selectedRowsList;
 var currentState = 0;
 
+// First 10 trees are created in order, then randomly chosen
+function* treeColorMaker() {
+  var index = 0;
+  while (index < 10) {
+    yield index++;
+  }
+  while (true) {
+    yield getRandomInt(0, 10);
+  }
+}
+treeColor = treeColorMaker();
+
 function updateText(delay, text) {
   d3.select('#step-text')
     .transition()
@@ -96,7 +108,7 @@ function updateState3() {
     var x = parseFloat(this.getAttribute('cx'));
     var y = parseFloat(this.getAttribute('cy'));
     svg.append("image") //.attr("xlink:href","img/noun_337864_cc.svg")
-      .attr("xlink:href","img/tree_icons/tree_" + getRandomInt(0, 10) + ".svg")
+      .attr("xlink:href","img/tree_icons/tree_" + treeColor.next().value + ".svg")
       .attr("class", "training-tree")
       .attr("x", x)
       .attr("y", y)
