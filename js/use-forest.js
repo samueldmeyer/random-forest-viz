@@ -24,8 +24,8 @@
       .attr('class', 'decision-mushroom')
       .attr("x", function(d) {return d.x + 1})
       .attr("y", 150)
-      .attr("width", 10)
-      .attr("height", 10)
+      .attr("width", 20)
+      .attr("height", 20)
       .transition()
       .delay(function(d, i) {
         return 10 * i;
@@ -36,8 +36,8 @@
       .duration(1000)
       .attr("width", 0)
       .attr("height", 0)
-      .attr("x", function(d) {return d.x + 6;})
-      .attr("y", function(d) {return d.y + 6;})
+      .attr("x", function(d) {return d.x + 12;})
+      .attr("y", function(d) {return d.y + 12;})
       .remove()
     svg.selectAll('.decision-dot')
       .data(treeList)
@@ -46,12 +46,12 @@
       .attr('class', 'decision-dot')
       .attr('r', 0)
       .attr('fill', "gray") // d3.f('color')
-      .attr('cy', function(d) {return d.y + 5;}) //d3.f('y'))
-      .attr('cx', function(d) {return d.x + 5;}) // d3.f('x'))
+      .attr('cy', function(d) {return d.y + 10;}) //d3.f('y'))
+      .attr('cx', function(d) {return d.x + 10;}) // d3.f('x'))
       .transition()
-      .delay(4500)
+      .delay(3500)
       .duration(1000)
-      .attr('r', 5);
+      .attr('r', 10);
   }
   function reverse1() {
     svg.selectAll('.decision-dot')
@@ -78,8 +78,8 @@
       .attr('fill', "gray") // d3.f('color')
       .attr('cy', function(d) {return d.y + 5;}) //d3.f('y'))
       .attr('cx', function(d) {return d.x + 5;}) // d3.f('x'))
-      .attr('r', 5);
-    decisionDot.attr('fill', 'gray').attr('r', 5)
+      .attr('r', 10);
+    decisionDot.attr('fill', 'gray').attr('r', 10)
       .transition()
       .duration(1000)
       .attr('fill', function(d) {return d.color === "green" ? "rgb(198, 239, 213)" : "rgb(180, 156, 193)"})
@@ -89,15 +89,15 @@
         return 10 * i;
       }).attr('cx', function(d) {
         if (d.color==="red") {
-          return 510 + 10 + 10 * (redIndex.next().value % 40);
+          return 510 + 20 + 20 * (redIndex.next().value % 20);
         } else {
-          return 510 - 10 - 10 * (greenIndex.next().value % 40);
+          return 510 - 20 - 20 * (greenIndex.next().value % 20);
         }
       }).attr('cy', function(d) {
         if (d.color==="red") {
-          return 430 + 10 * Math.floor(redIndex2.next().value / 40);
+          return 430 + 20 * Math.floor(redIndex2.next().value / 20);
         } else {
-          return 430 + 10 * Math.floor(greenIndex2.next().value / 40);
+          return 430 + 20 * Math.floor(greenIndex2.next().value / 20);
         }
       }); //450
   }
@@ -106,13 +106,13 @@
       .data(treeList)
       .transition()
       .duration(1000)
-      .attr('cy', function(d) {return d.y + 5;})
-      .attr('cx', function(d) {return d.x + 5;})
+      .attr('cy', function(d) {return d.y + 10;})
+      .attr('cx', function(d) {return d.x + 10;})
       .attr('fill', 'gray');
   }
   function transition3() {
     svg.append("text")
-      .text("225 vote edible")
+      .text("58 vote edible")
       .attr("font-family", 'Roboto", sans-serif')
       .attr("font-size", "10px")
       .attr("fill", "black")
@@ -126,7 +126,7 @@
       .attr('font-size', '20px');
     setTimeout(function() {
       svg.append("text")
-      .text("25 vote poisonous")
+      .text("7 vote poisonous")
       .attr("font-family", 'Roboto", sans-serif')
       .attr("font-size", "10px")
       .attr("fill", "black")
@@ -147,14 +147,14 @@
   var svg = d3.select('#use-forest svg');
   var currentState = 0;
 
-  var redList = [132,235,224,186,159,87,151,0,166,0,19,179,184,135,227,229,
-                 106,109,234,149,168,182,91,130,181]
+  var redList = [132,235,224,186,159,87,151,0,166,19,179,184,135,227,229,
+                 106,109,234,149, 23, 27, 39, 62, 51]
   var treeList = [];
-  for (let j = 0; j < 10; j++) {
-    for (let i = 0; i < 25; i++) {
+  for (let j = 0; j < 5; j++) {
+    for (let i = 0; i < 13; i++) {
       treeList.push({
-        x: 257 + i * 20,
-        y: 200 + j * 20,
+        x: 257 + i * 40,
+        y: 200 + j * 40,
         color: redList.indexOf(i+j*25) === -1 ? "green" : "red"
       })
     }
@@ -170,22 +170,22 @@
     .append('image')
     .attr('class', 'd-tree')
     .attr("xlink:href", function(d, i) {return "img/tree_icons/tree_" + getRandomInt(0,9) + ".png"})
-    .attr("width", 10)
-    .attr("height", 11)
+    .attr("width", 20)
+    .attr("height", 22)
     // .attr("xlink:href","img/noun_337864_cc.svg")
     .attr('x', d3.f('x'))
     .attr('y', d3.f('y'));
 
-  var state0Text = 'Here, we have 250 trees. We send copies of the features of the mushroom to each tree.';
+  var state0Text = 'Here, we have 65 trees. We send copies of the features of the mushroom to each tree.';
   var state1Text = 'Next, we have each tree decide whether it believes the mushroom is poisonous or not.';
   var state2Text = 'Next, we tally the votes to see the final result.';
-  var state3Text = 'By a vote of 225-25, the forest has decided that the mushroom is edible.';
+  var state3Text = 'By a vote of 58-7, the forest has decided that the mushroom is edible.';
   $('#use-step-text').text(state0Text);
   $('#use-forest-next').on('click', function() {
     switch (currentState) {
       case 0:
         transition1();
-        updateText(3000, state1Text);
+        updateText(4000, state1Text);
         $('#use-forest-back').removeClass('disabled');
         break;
       case 1:
