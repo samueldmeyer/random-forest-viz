@@ -89,9 +89,9 @@
         return 10 * i;
       }).attr('cx', function(d) {
         if (d.color==="red") {
-          return 510 + 20 + 20 * (redIndex.next().value % 20);
+          return 460 + 20 + 20 * (redIndex.next().value % 20);
         } else {
-          return 510 - 20 - 20 * (greenIndex.next().value % 20);
+          return 460 - 20 - 20 * (greenIndex.next().value % 20);
         }
       }).attr('cy', function(d) {
         if (d.color==="red") {
@@ -116,12 +116,12 @@
       .attr("font-family", 'Roboto", sans-serif')
       .attr("font-size", "10px")
       .attr("fill", "black")
-      .attr("x", 400)
+      .attr("x", 350)
       .attr("y", 512)
       .transition()
       .duration(1000)
       .ease(d3.easeBackOut.overshoot(2))
-      .attr("x", 360)
+      .attr("x", 310)
       .attr("y", 512)
       .attr('font-size', '20px');
     setTimeout(function() {
@@ -130,12 +130,12 @@
       .attr("font-family", 'Roboto", sans-serif')
       .attr("font-size", "10px")
       .attr("fill", "black")
-      .attr("x", 580)
+      .attr("x", 530)
       .attr("y", 512)
       .transition()
       .duration(1000)
       .ease(d3.easeBackOut.overshoot(2))
-      .attr("x", 540)
+      .attr("x", 490)
       .attr("y", 512)
       .attr('font-size', '20px');
     }, 1000);
@@ -153,14 +153,14 @@
   for (let j = 0; j < 5; j++) {
     for (let i = 0; i < 13; i++) {
       treeList.push({
-        x: 257 + i * 40,
+        x: 207 + i * 40,
         y: 200 + j * 40,
         color: redList.indexOf(i+j*25) === -1 ? "green" : "red"
       })
     }
   }
   svg.append("image").attr("xlink:href","img/noun_990340_w_arrows.svg")
-    .attr("x", 390)
+    .attr("x", 340)
     .attr("y", 0)
     .attr("width", 230)
     .attr("height", 150);

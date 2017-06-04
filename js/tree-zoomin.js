@@ -8,7 +8,7 @@
 (function () {  // IIFE to clean globals
     // Set the dimensions and margins of the diagram
     var margin = {top: 20, right: 90, bottom: 30, left: 120},
-    width = 960 - margin.left - margin.right,
+    width = 900 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom,
     link_length = 220,
     rect_width = 100,
