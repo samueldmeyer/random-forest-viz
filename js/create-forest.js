@@ -193,8 +193,14 @@ $('#create-forest-back').on('click', function () {
       .style('background-color', 'white').style('opacity', 1);
     updateText(0, state0Text);
   } else if (currentState === 1) {
-    d3.selectAll("th, td")
-      .style('background-color', 'white').style('opacity', 1);
+    d3.selectAll("th, td").transition().duration(500)
+      .style('background-color', 'white').style('opacity', 1)
+      .transition().duration(0).style('background-color', null);
+    var tr = d3.selectAll("tbody tr").filter(function(d, i) {
+      return selectedRowsList.indexOf(i + 1) > -1;
+    });
+    // add back light blue row highlight
+    tr.transition().delay(400).duration(400).style('background-color', 'LightBlue');
     updateText(0, state1Text);
   } else if (currentState === 2) {
     updateText(0, state2Text);
