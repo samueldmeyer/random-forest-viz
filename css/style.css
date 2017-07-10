@@ -108,3 +108,8 @@ tr {
   border-radius: 1px;
   border-color: #bdbdbd;
 }
+
+.page-footer a {
+  color: #014466;
+  /*color: #C0EAFF;*/
+}
